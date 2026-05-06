@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node / frontend
+node_modules/
+dist/
+.vite/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local raw source telemetry data
+raw_data/
+
+# Environment files
+.env
+.env.local
+
+# Temporary files
+*.log
+
+# Regenerable detailed audit output
+reports/audit_report.json
