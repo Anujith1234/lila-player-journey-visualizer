@@ -100,3 +100,30 @@ export interface MatchTelemetry {
   };
   players: TelemetryPlayer[];
 }
+
+export type HeatmapLayer =
+  | "traffic"
+  | "kills"
+  | "deaths"
+  | "loot"
+  | "stormDeaths";
+
+export type HeatmapPlayerFilter = "all" | PlayerType;
+
+export interface HeatmapCell {
+  mapId: MapId;
+  date: string;
+  cellX: number;
+  cellY: number;
+  centerU: number;
+  centerV: number;
+  count: number;
+}
+
+export interface HeatmapData {
+  gridSize: number;
+  layers: Record<
+    HeatmapLayer,
+    Record<HeatmapPlayerFilter, HeatmapCell[]>
+  >;
+}

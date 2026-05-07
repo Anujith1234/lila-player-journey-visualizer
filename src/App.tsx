@@ -1,7 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import "./App.css";
-import { loadManifest, loadMatchTelemetry } from "./services/telemetryData";
+import {
+  loadHeatmapData,
+  loadManifest,
+  loadMatchTelemetry,
+} from "./services/telemetryData";
 import type {
+  HeatmapData,
+  HeatmapLayer,
+  HeatmapPlayerFilter,
   Manifest,
   ManifestMatch,
   MapId,
@@ -12,8 +19,21 @@ import {
   buildPlayerPaths,
   type LayerVisibility,
 } from "./utils/telemetryLayers";
+import {
+  getHeatmapLabel,
+  getVisibleHeatmapCells,
+} from "./utils/heatmap";
 
 const PLAYBACK_TIME_SCALE = 0.2;
+
+function getHeatmapOpacity(layer: HeatmapLayer, intensity: number): number {
+  if (layer === "traffic") return 0.035 + intensity * 0.26;
+  if (layer === "loot") return 0.05 + intensity * 0.34;
+  if (layer === "kills") return 0.08 + intensity * 0.42;
+  if (layer === "deaths") return 0.08 + intensity * 0.42;
+
+  return 0.12 + intensity * 0.5;
+}
 
 function formatTimelineTime(milliseconds: number): string {
   const totalSeconds = Math.floor(milliseconds / 1000);
@@ -47,6 +67,13 @@ function App() {
   const [currentTimeMs, setCurrentTimeMs] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  const [heatmapData, setHeatmapData] = useState<HeatmapData | null>(null);
+  const [heatmapLoadError, setHeatmapLoadError] = useState<string | null>(null);
+  const [selectedHeatmapLayer, setSelectedHeatmapLayer] =
+    useState<HeatmapLayer>("traffic");
+  const [heatmapPlayerFilter, setHeatmapPlayerFilter] =
+    useState<HeatmapPlayerFilter>("all");
+  const [showHeatmap, setShowHeatmap] = useState(false);
 
   function toggleLayer(layer: keyof LayerVisibility) {
     setLayerVisibility((current) => ({
@@ -68,6 +95,18 @@ function App() {
         const message =
           error instanceof Error ? error.message : "Unknown data loading error";
         setLoadError(message);
+      });
+  }, []);
+
+  useEffect(() => {
+    loadHeatmapData()
+      .then((data) => {
+        setHeatmapData(data);
+      })
+      .catch((error: unknown) => {
+        const message =
+          error instanceof Error ? error.message : "Unknown heatmap loading error";
+        setHeatmapLoadError(message);
       });
   }, []);
 
@@ -157,6 +196,26 @@ function App() {
     if (!matchTelemetry) return [];
     return buildEventMarkers(matchTelemetry.players, layerVisibility, currentTimeMs);
   }, [matchTelemetry, layerVisibility, currentTimeMs]);
+
+  const visibleHeatmapCells = useMemo(() => {
+    if (!selectedMatch) return [];
+
+    return getVisibleHeatmapCells(
+      heatmapData,
+      selectedHeatmapLayer,
+      heatmapPlayerFilter,
+      selectedMatch.mapId,
+      selectedDate,
+      isPlaying,
+    );
+  }, [
+    heatmapData,
+    heatmapPlayerFilter,
+    isPlaying,
+    selectedDate,
+    selectedHeatmapLayer,
+    selectedMatch,
+  ]);
 
   useEffect(() => {
     if (!isPlaying || !matchTelemetry) return;
@@ -337,6 +396,55 @@ function App() {
             <span>Storm deaths</span>
           </label>
         </div>
+
+        <div className="layer-panel">
+          <p className="eyebrow">Heatmap</p>
+
+          <label className="toggle-row">
+            <input
+              type="checkbox"
+              checked={showHeatmap}
+              onChange={() => setShowHeatmap((current) => !current)}
+            />
+            <span>Show heatmap overlay</span>
+          </label>
+
+          <label className="field">
+            <span>Heatmap layer</span>
+            <select
+              value={selectedHeatmapLayer}
+              onChange={(event) =>
+                setSelectedHeatmapLayer(event.target.value as HeatmapLayer)
+              }
+              disabled={!showHeatmap}
+            >
+              <option value="traffic">Traffic</option>
+              <option value="kills">Kills</option>
+              <option value="deaths">Deaths</option>
+              <option value="loot">Loot</option>
+              <option value="stormDeaths">Storm deaths</option>
+            </select>
+          </label>
+
+          <label className="field">
+            <span>Players</span>
+            <select
+              value={heatmapPlayerFilter}
+              onChange={(event) =>
+                setHeatmapPlayerFilter(event.target.value as HeatmapPlayerFilter)
+              }
+              disabled={!showHeatmap}
+            >
+              <option value="all">All</option>
+              <option value="human">Humans</option>
+              <option value="bot">Bots</option>
+            </select>
+          </label>
+
+          {heatmapLoadError && (
+            <p className="panel-warning">{heatmapLoadError}</p>
+          )}
+        </div>
       </aside>
 
       <section className="main-panel panel">
@@ -370,6 +478,28 @@ function App() {
                     preserveAspectRatio="none"
                     aria-label="Telemetry overlay"
                   >
+
+                    {showHeatmap &&
+                      heatmapData &&
+                      visibleHeatmapCells.map((cell) => (
+                        <rect
+                          key={`${cell.mapId}-${cell.date}-${selectedHeatmapLayer}-${heatmapPlayerFilter}-${cell.cellX}-${cell.cellY}`}
+                          className={`heatmap-cell heatmap-cell--${selectedHeatmapLayer}`}
+                          x={(cell.cellX / heatmapData.gridSize) * 1000}
+                          y={
+                            ((heatmapData.gridSize - cell.cellY - 1) /
+                              heatmapData.gridSize) *
+                            1000
+                          }
+                          width={1000 / heatmapData.gridSize}
+                          height={1000 / heatmapData.gridSize}
+                          opacity={getHeatmapOpacity(
+                            selectedHeatmapLayer,
+                            cell.intensity,
+                          )}
+                        />
+                      ))}
+
                     {visiblePaths.map((path) => (
                       <polyline
                         key={path.userId}
@@ -410,7 +540,13 @@ function App() {
                     {!isMatchLoading && !matchLoadError && matchTelemetry && (
                       <div className="map-status-card">
                         <strong>{visiblePaths.length}</strong> active paths ·{" "}
-                        <strong>{visibleMarkers.length}</strong> visible markers
+                        <strong>{visibleMarkers.length}</strong> markers
+                        {showHeatmap && (
+                          <>
+                            {" "}· <strong>{visibleHeatmapCells.length}</strong>{" "}
+                            {getHeatmapLabel(selectedHeatmapLayer).toLowerCase()} cells
+                          </>
+                        )}
                       </div>
                     )}
                   </div>
@@ -454,7 +590,13 @@ function App() {
             <div className="timeline-actions">
               <button
                 type="button"
-                onClick={() => setIsPlaying((current) => !current)}
+                onClick={() => {
+                  if (!isPlaying && currentTimeMs >= timelineMaxMs) {
+                    setCurrentTimeMs(0);
+                  }
+
+                  setIsPlaying((current) => !current);
+                }}
                 disabled={!matchTelemetry || timelineMaxMs <= 0}
               >
                 {isPlaying ? "Pause" : "Play"}
@@ -551,6 +693,9 @@ function App() {
             </span>
             <span>
               <i className="legend-dot legend-dot--storm" /> Storm death
+            </span>
+            <span>
+              <i className="legend-heatmap" /> Heatmap intensity
             </span>
           </div>
         </div>
