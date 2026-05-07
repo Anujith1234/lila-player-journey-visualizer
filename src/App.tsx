@@ -1,7 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import "./App.css";
-import { loadManifest } from "./services/telemetryData";
-import type { Manifest, ManifestMatch, MapId } from "./types/telemetry";
+import { loadManifest, loadMatchTelemetry } from "./services/telemetryData";
+import type {
+  Manifest,
+  ManifestMatch,
+  MapId,
+  MatchTelemetry,
+} from "./types/telemetry";
 
 function App() {
   const [manifest, setManifest] = useState<Manifest | null>(null);
@@ -9,6 +14,9 @@ function App() {
   const [selectedMap, setSelectedMap] = useState<MapId | "all">("all");
   const [selectedDate, setSelectedDate] = useState<string>("all");
   const [selectedMatchKey, setSelectedMatchKey] = useState<string>("");
+  const [matchTelemetry, setMatchTelemetry] = useState<MatchTelemetry | null>(null);
+  const [matchLoadError, setMatchLoadError] = useState<string | null>(null);
+  const [isMatchLoading, setIsMatchLoading] = useState(false);
 
   useEffect(() => {
     loadManifest()
@@ -37,14 +45,13 @@ function App() {
   }, [manifest, selectedMap, selectedDate]);
 
   const selectedMatch = useMemo<ManifestMatch | null>(() => {
-    if (!manifest) return null;
+    if (!manifest || filteredMatches.length === 0) return null;
 
     return (
-      manifest.matches.find((match) => match.matchKey === selectedMatchKey) ??
-      filteredMatches[0] ??
-      null
+      filteredMatches.find((match) => match.matchKey === selectedMatchKey) ??
+      filteredMatches[0]
     );
-  }, [manifest, selectedMatchKey, filteredMatches]);
+  }, [manifest, filteredMatches, selectedMatchKey]);
 
   useEffect(() => {
     if (filteredMatches.length === 0) {
@@ -60,6 +67,44 @@ function App() {
       setSelectedMatchKey(filteredMatches[0].matchKey);
     }
   }, [filteredMatches, selectedMatchKey]);
+
+  useEffect(() => {
+    if (!selectedMatch) {
+      setMatchTelemetry(null);
+      setMatchLoadError(null);
+      setIsMatchLoading(false);
+      return;
+    }
+
+    let isCancelled = false;
+
+    setIsMatchLoading(true);
+    setMatchLoadError(null);
+
+    loadMatchTelemetry(selectedMatch.matchFile)
+      .then((data) => {
+        if (!isCancelled) {
+          setMatchTelemetry(data);
+        }
+      })
+      .catch((error: unknown) => {
+        if (!isCancelled) {
+          const message =
+            error instanceof Error ? error.message : "Unknown match loading error";
+          setMatchLoadError(message);
+          setMatchTelemetry(null);
+        }
+      })
+      .finally(() => {
+        if (!isCancelled) {
+          setIsMatchLoading(false);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [selectedMatch]);
 
   if (loadError) {
     return (
@@ -168,15 +213,58 @@ function App() {
           )}
         </div>
 
-        <div className="map-placeholder">
-          <div>
-            <p className="eyebrow">Map Workspace</p>
-            <h3>Telemetry review canvas</h3>
-            <p>
-              Select a map, date, and match to inspect player journeys, combat activity,
-              loot behavior, storm deaths, and heatmap patterns on the minimap.
-            </p>
-          </div>
+        <div className="map-workspace">
+          {selectedMatch ? (
+            <>
+              {manifest.minimaps[selectedMatch.mapId] ? (
+                <img
+                  className="minimap-image"
+                  src={`/minimaps/${manifest.minimaps[selectedMatch.mapId].file}`}
+                  alt={`${selectedMatch.mapId} minimap`}
+                />
+              ) : (
+                <div className="map-placeholder">
+                  <div>
+                    <p className="eyebrow">Map Asset Missing</p>
+                    <h3>Minimap not found</h3>
+                    <p>
+                      The selected match references {selectedMatch.mapId}, but the
+                      minimap entry is not available in the manifest.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              <div className="map-overlay-placeholder">
+                {isMatchLoading && <span>Loading selected match…</span>}
+
+                {matchLoadError && (
+                  <span className="error-text">{matchLoadError}</span>
+                )}
+
+                {!isMatchLoading && !matchLoadError && matchTelemetry && (
+                  <div className="map-ready-card">
+                    <p className="eyebrow">Match Loaded</p>
+                    <h3>{matchTelemetry.players.length} tracked entities</h3>
+                    <p>
+                      {matchTelemetry.summary.eventCount.toLocaleString()} telemetry
+                      events loaded for the selected match.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="map-placeholder">
+              <div>
+                <p className="eyebrow">Map Workspace</p>
+                <h3>No match selected</h3>
+                <p>
+                  Select a map, date, and match to inspect telemetry on the minimap.
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

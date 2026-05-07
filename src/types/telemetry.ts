@@ -64,3 +64,39 @@ export interface Manifest {
   };
   matches: ManifestMatch[];
 }
+
+export interface TelemetryEvent {
+  t: number;
+  seq: number;
+  event: EventName;
+  eventGroup: EventGroup;
+  x: number;
+  y: number;
+  z: number;
+  u: number;
+  v: number;
+}
+
+export interface TelemetryPlayer {
+  userId: string;
+  playerType: PlayerType;
+  eventCount: number;
+  events: TelemetryEvent[];
+}
+
+export interface MatchTelemetry {
+  matchKey: string;
+  matchId: string;
+  date: string;
+  mapId: MapId;
+  durationMs: number;
+  summary: {
+    playerCount: number;
+    humanCount: number;
+    botCount: number;
+    eventCount: number;
+    events: Partial<Record<EventName, number>>;
+    eventGroups: Partial<Record<EventGroup, number>>;
+  };
+  players: TelemetryPlayer[];
+}
