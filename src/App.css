@@ -173,7 +173,7 @@ select {
 
 .map-frame {
   position: relative;
-  width: min(100%, calc(100vh - 190px));
+  width: min(100%, 760px, calc(100vh - 210px));
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
@@ -328,34 +328,6 @@ select {
 
 .legend-dot--storm {
   background: #b973ff;
-}
-
-.map-overlay-placeholder {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-}
-
-.map-ready-card {
-  max-width: 360px;
-  padding: 18px;
-  border-radius: 18px;
-  background: rgba(7, 9, 17, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  text-align: center;
-  backdrop-filter: blur(10px);
-}
-
-.map-ready-card h3 {
-  margin-bottom: 8px;
-}
-
-.map-ready-card p {
-  margin-bottom: 0;
-  color: #c3c9d8;
-  line-height: 1.5;
 }
 
 .error-text {

@@ -112,7 +112,7 @@ export function buildEventMarkers(
       if (kind === "storm_death" && !visibility.stormDeaths) continue;
 
       markers.push({
-        id: `${player.userId}-${event.seq}-${event.event}`,
+        id: `${player.userId}-${event.seq}-${event.event}-${event.t}`,
         userId: player.userId,
         playerType: player.playerType,
         event: event.event,

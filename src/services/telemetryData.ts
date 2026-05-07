@@ -4,7 +4,9 @@ export async function loadManifest(): Promise<Manifest> {
   const response = await fetch("/data/manifest.json");
 
   if (!response.ok) {
-    throw new Error(`Failed to load manifest.json: ${response.status}`);
+    throw new Error(
+      `Failed to load manifest.json: ${response.status} ${response.statusText}`,
+    );
   }
 
   return response.json() as Promise<Manifest>;
@@ -14,7 +16,9 @@ export async function loadMatchTelemetry(matchFile: string): Promise<MatchTeleme
   const response = await fetch(`/data/${matchFile}`);
 
   if (!response.ok) {
-    throw new Error(`Failed to load match telemetry: ${response.status}`);
+    throw new Error(
+      `Failed to load match telemetry: ${response.status} ${response.statusText}`,
+    );
   }
 
   return response.json() as Promise<MatchTelemetry>;

@@ -102,6 +102,7 @@ function App() {
 
     setIsMatchLoading(true);
     setMatchLoadError(null);
+    setMatchTelemetry(null);
 
     loadMatchTelemetry(selectedMatch.matchFile)
       .then((data) => {
