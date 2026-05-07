@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-05-07T02:20:06.723562+00:00",
+  "source": {
+    "filesTotal": 1243,
+    "rowsTotal": 89104,
+    "dateRange": [
+      "February_10",
+      "February_14"
+    ],
+    "maps": [
+      "AmbroseValley",
+      "GrandRift",
+      "Lockdown"
+    ]
+  },
+  "counts": {
+    "uniquePlayers": 339,
+    "uniqueHumans": 245,
+    "uniqueBots": 94,
+    "uniqueMatches": 796
+  },
+  "rowsByDate": {
+    "February_10": 33687,
+    "February_11": 21235,
+    "February_12": 18429,
+    "February_13": 11106,
+    "February_14": 4647
+  },
+  "rowsByMap": {
+    "AmbroseValley": 61013,
+    "GrandRift": 6853,
+    "Lockdown": 21238
+  },
+  "rowsByEvent": {
+    "Position": 51347,
+    "Loot": 12885,
+    "BotKilled": 700,
+    "KilledByStorm": 39,
+    "BotKill": 2415,
+    "BotPosition": 21712,
+    "Kill": 3,
+    "Killed": 3
+  },
+  "rowsByEventGroup": {
+    "movement": 73059,
+    "loot": 12885,
+    "death": 703,
+    "storm_death": 39,
+    "kill": 2418
+  },
+  "rowsByPlayerType": {
+    "human": 66161,
+    "bot": 22943
+  },
+  "minimaps": {
+    "AmbroseValley": {
+      "file": "AmbroseValley_Minimap.png",
+      "width": 4320,
+      "height": 4320
+    },
+    "GrandRift": {
+      "file": "GrandRift_Minimap.png",
+      "width": 2160,
+      "height": 2158
+    },
+    "Lockdown": {
+      "file": "Lockdown_Minimap.jpg",
+      "width": 9000,
+      "height": 9000
+    }
+  }
+}

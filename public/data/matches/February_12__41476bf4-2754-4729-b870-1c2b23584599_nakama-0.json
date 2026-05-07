@@ -1,0 +1,96 @@
+{
+  "matchKey": "February_12__41476bf4-2754-4729-b870-1c2b23584599.nakama-0",
+  "matchId": "41476bf4-2754-4729-b870-1c2b23584599.nakama-0",
+  "date": "February_12",
+  "mapId": "Lockdown",
+  "durationMs": 50,
+  "summary": {
+    "playerCount": 1,
+    "humanCount": 1,
+    "botCount": 0,
+    "eventCount": 6,
+    "events": {
+      "Position": 5,
+      "BotKilled": 1
+    },
+    "eventGroups": {
+      "movement": 5,
+      "death": 1
+    }
+  },
+  "players": [
+    {
+      "userId": "b3340cc5-c9fa-4108-b56d-0728bc978a22",
+      "playerType": "human",
+      "eventCount": 6,
+      "events": [
+        {
+          "t": 0,
+          "seq": 0,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -117.7381,
+          "y": 50.8848,
+          "z": 87.5003,
+          "u": 0.382262,
+          "v": 0.5875
+        },
+        {
+          "t": 35,
+          "seq": 1,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -120.6505,
+          "y": 51.2424,
+          "z": 81.0648,
+          "u": 0.379349,
+          "v": 0.581065
+        },
+        {
+          "t": 40,
+          "seq": 2,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -119.9762,
+          "y": 51.1045,
+          "z": 81.7857,
+          "u": 0.380024,
+          "v": 0.581786
+        },
+        {
+          "t": 45,
+          "seq": 3,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -110.1375,
+          "y": 49.5763,
+          "z": 85.6155,
+          "u": 0.389862,
+          "v": 0.585615
+        },
+        {
+          "t": 47,
+          "seq": 4,
+          "event": "BotKilled",
+          "eventGroup": "death",
+          "x": -111.8887,
+          "y": 50.1129,
+          "z": 85.1973,
+          "u": 0.388111,
+          "v": 0.585197
+        },
+        {
+          "t": 50,
+          "seq": 5,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -112.0678,
+          "y": 50.1762,
+          "z": 85.1947,
+          "u": 0.387932,
+          "v": 0.585195
+        }
+      ]
+    }
+  ]
+}

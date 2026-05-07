@@ -1,0 +1,102 @@
+{
+  "AmbroseValley": {
+    "rowCount": 61013,
+    "matchCount": 566,
+    "playerCount": 268,
+    "humanRowCount": 47428,
+    "botRowCount": 13585,
+    "eventCounts": {
+      "Position": 36189,
+      "Loot": 9955,
+      "BotKilled": 486,
+      "BotKill": 1797,
+      "BotPosition": 12565,
+      "KilledByStorm": 17,
+      "Kill": 2,
+      "Killed": 2
+    },
+    "eventGroupCounts": {
+      "movement": 48754,
+      "loot": 9955,
+      "death": 488,
+      "kill": 1799,
+      "storm_death": 17
+    },
+    "bounds": {
+      "xMin": -324.96697998046875,
+      "xMax": 301.78729248046875,
+      "zMin": -380.00714111328125,
+      "zMax": 360.7577209472656,
+      "uMin": 0.05003668891059028,
+      "uMax": 0.7464303249782986,
+      "vMin": 0.10332539876302084,
+      "vMax": 0.9263974677191841
+    }
+  },
+  "GrandRift": {
+    "rowCount": 6853,
+    "matchCount": 59,
+    "playerCount": 59,
+    "humanRowCount": 4803,
+    "botRowCount": 2050,
+    "eventCounts": {
+      "Position": 3740,
+      "Loot": 880,
+      "KilledByStorm": 5,
+      "BotPosition": 1988,
+      "BotKilled": 46,
+      "BotKill": 192,
+      "Kill": 1,
+      "Killed": 1
+    },
+    "eventGroupCounts": {
+      "movement": 5728,
+      "loot": 880,
+      "storm_death": 5,
+      "death": 47,
+      "kill": 193
+    },
+    "bounds": {
+      "xMin": -225.90382385253906,
+      "xMax": 256.6163635253906,
+      "zMin": -194.00479125976562,
+      "zMax": 170.1127471923828,
+      "uMin": 0.11032044087342674,
+      "uMax": 0.9408199027975742,
+      "vMin": 0.16522411142897483,
+      "vMax": 0.7919324392295746
+    }
+  },
+  "Lockdown": {
+    "rowCount": 21238,
+    "matchCount": 171,
+    "playerCount": 120,
+    "humanRowCount": 13930,
+    "botRowCount": 7308,
+    "eventCounts": {
+      "Position": 11418,
+      "Loot": 2050,
+      "BotKill": 426,
+      "BotKilled": 168,
+      "BotPosition": 7159,
+      "KilledByStorm": 17
+    },
+    "eventGroupCounts": {
+      "movement": 18577,
+      "loot": 2050,
+      "kill": 426,
+      "death": 168,
+      "storm_death": 17
+    },
+    "bounds": {
+      "xMin": -406.6295166015625,
+      "xMax": 348.3560791015625,
+      "zMin": -285.1046142578125,
+      "zMax": 329.23785400390625,
+      "uMin": 0.0933704833984375,
+      "uMax": 0.8483560791015625,
+      "vMin": 0.2148953857421875,
+      "vMax": 0.8292378540039063
+    }
+  }
+}

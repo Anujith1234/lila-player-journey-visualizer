@@ -1,0 +1,52 @@
+{
+  "matchKey": "February_10__85f53074-77ee-4b30-b5e4-68fe107e054f.nakama-0",
+  "matchId": "85f53074-77ee-4b30-b5e4-68fe107e054f.nakama-0",
+  "date": "February_10",
+  "mapId": "AmbroseValley",
+  "durationMs": 13,
+  "summary": {
+    "playerCount": 1,
+    "humanCount": 1,
+    "botCount": 0,
+    "eventCount": 2,
+    "events": {
+      "Position": 1,
+      "BotKilled": 1
+    },
+    "eventGroups": {
+      "movement": 1,
+      "death": 1
+    }
+  },
+  "players": [
+    {
+      "userId": "94d042cb-a0f2-45f3-bdca-42fab73cfef5",
+      "playerType": "human",
+      "eventCount": 2,
+      "events": [
+        {
+          "t": 0,
+          "seq": 0,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -104.2815,
+          "y": 127.5327,
+          "z": -365.6881,
+          "u": 0.295243,
+          "v": 0.119235
+        },
+        {
+          "t": 13,
+          "seq": 1,
+          "event": "BotKilled",
+          "eventGroup": "death",
+          "x": -104.2815,
+          "y": 127.5327,
+          "z": -365.6881,
+          "u": 0.295243,
+          "v": 0.119235
+        }
+      ]
+    }
+  ]
+}

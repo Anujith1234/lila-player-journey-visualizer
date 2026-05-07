@@ -1,0 +1,419 @@
+{
+  "matchKey": "February_12__c7568830-817d-4ccb-b119-16b1fb527cc1.nakama-0",
+  "matchId": "c7568830-817d-4ccb-b119-16b1fb527cc1.nakama-0",
+  "date": "February_12",
+  "mapId": "AmbroseValley",
+  "durationMs": 166,
+  "summary": {
+    "playerCount": 1,
+    "humanCount": 1,
+    "botCount": 0,
+    "eventCount": 35,
+    "events": {
+      "Position": 26,
+      "Loot": 6,
+      "BotKill": 2,
+      "BotKilled": 1
+    },
+    "eventGroups": {
+      "movement": 26,
+      "loot": 6,
+      "kill": 2,
+      "death": 1
+    }
+  },
+  "players": [
+    {
+      "userId": "b5b5b6be-cfad-40a2-acbf-413d60ac3a80",
+      "playerType": "human",
+      "eventCount": 35,
+      "events": [
+        {
+          "t": 0,
+          "seq": 0,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -143.2248,
+          "y": 101.3184,
+          "z": -193.3853,
+          "u": 0.251972,
+          "v": 0.310683
+        },
+        {
+          "t": 40,
+          "seq": 1,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -134.8071,
+          "y": 100.6654,
+          "z": -195.7965,
+          "u": 0.261325,
+          "v": 0.308004
+        },
+        {
+          "t": 45,
+          "seq": 2,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -120.3544,
+          "y": 100.7341,
+          "z": -192.3554,
+          "u": 0.277384,
+          "v": 0.311827
+        },
+        {
+          "t": 50,
+          "seq": 3,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -114.1101,
+          "y": 100.7665,
+          "z": -183.3377,
+          "u": 0.284322,
+          "v": 0.321847
+        },
+        {
+          "t": 55,
+          "seq": 4,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -131.7897,
+          "y": 101.81,
+          "z": -182.943,
+          "u": 0.264678,
+          "v": 0.322286
+        },
+        {
+          "t": 60,
+          "seq": 5,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -142.779,
+          "y": 101.6799,
+          "z": -183.6821,
+          "u": 0.252468,
+          "v": 0.321464
+        },
+        {
+          "t": 61,
+          "seq": 6,
+          "event": "Loot",
+          "eventGroup": "loot",
+          "x": -142.779,
+          "y": 101.6799,
+          "z": -183.6821,
+          "u": 0.252468,
+          "v": 0.321464
+        },
+        {
+          "t": 65,
+          "seq": 7,
+          "event": "Loot",
+          "eventGroup": "loot",
+          "x": -145.5552,
+          "y": 101.7317,
+          "z": -181.8625,
+          "u": 0.249383,
+          "v": 0.323486
+        },
+        {
+          "t": 65,
+          "seq": 8,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -145.5552,
+          "y": 101.7317,
+          "z": -181.8625,
+          "u": 0.249383,
+          "v": 0.323486
+        },
+        {
+          "t": 70,
+          "seq": 9,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -140.3938,
+          "y": 101.4687,
+          "z": -188.7596,
+          "u": 0.255118,
+          "v": 0.315823
+        },
+        {
+          "t": 75,
+          "seq": 10,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -142.742,
+          "y": 100.5198,
+          "z": -202.9214,
+          "u": 0.252509,
+          "v": 0.300087
+        },
+        {
+          "t": 77,
+          "seq": 11,
+          "event": "BotKill",
+          "eventGroup": "kill",
+          "x": -139.8769,
+          "y": 100.6573,
+          "z": -202.9086,
+          "u": 0.255692,
+          "v": 0.300102
+        },
+        {
+          "t": 80,
+          "seq": 12,
+          "event": "Loot",
+          "eventGroup": "loot",
+          "x": -137.5059,
+          "y": 100.7023,
+          "z": -204.8684,
+          "u": 0.258327,
+          "v": 0.297924
+        },
+        {
+          "t": 80,
+          "seq": 13,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -137.5059,
+          "y": 100.7023,
+          "z": -204.8684,
+          "u": 0.258327,
+          "v": 0.297924
+        },
+        {
+          "t": 81,
+          "seq": 14,
+          "event": "Loot",
+          "eventGroup": "loot",
+          "x": -137.5059,
+          "y": 100.7023,
+          "z": -204.8684,
+          "u": 0.258327,
+          "v": 0.297924
+        },
+        {
+          "t": 90,
+          "seq": 15,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -135.4146,
+          "y": 100.6792,
+          "z": -194.832,
+          "u": 0.26065,
+          "v": 0.309076
+        },
+        {
+          "t": 95,
+          "seq": 16,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -126.3752,
+          "y": 100.6462,
+          "z": -180.7752,
+          "u": 0.270694,
+          "v": 0.324694
+        },
+        {
+          "t": 100,
+          "seq": 17,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -124.1789,
+          "y": 103.4988,
+          "z": -164.2258,
+          "u": 0.273135,
+          "v": 0.343082
+        },
+        {
+          "t": 105,
+          "seq": 18,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -121.1486,
+          "y": 108.4594,
+          "z": -148.4506,
+          "u": 0.276502,
+          "v": 0.36061
+        },
+        {
+          "t": 110,
+          "seq": 19,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -110.5725,
+          "y": 102.829,
+          "z": -132.8837,
+          "u": 0.288253,
+          "v": 0.377907
+        },
+        {
+          "t": 115,
+          "seq": 20,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -104.3377,
+          "y": 106.5615,
+          "z": -116.0785,
+          "u": 0.29518,
+          "v": 0.396579
+        },
+        {
+          "t": 120,
+          "seq": 21,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -93.7704,
+          "y": 106.1259,
+          "z": -92.5688,
+          "u": 0.306922,
+          "v": 0.422701
+        },
+        {
+          "t": 125,
+          "seq": 22,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -67.5626,
+          "y": 106.2968,
+          "z": -92.8168,
+          "u": 0.336042,
+          "v": 0.422426
+        },
+        {
+          "t": 130,
+          "seq": 23,
+          "event": "BotKill",
+          "eventGroup": "kill",
+          "x": -58.5427,
+          "y": 107.0665,
+          "z": -83.5216,
+          "u": 0.346064,
+          "v": 0.432754
+        },
+        {
+          "t": 130,
+          "seq": 24,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -58.5427,
+          "y": 107.0665,
+          "z": -83.5216,
+          "u": 0.346064,
+          "v": 0.432754
+        },
+        {
+          "t": 134,
+          "seq": 25,
+          "event": "Loot",
+          "eventGroup": "loot",
+          "x": -55.6673,
+          "y": 107.5915,
+          "z": -80.3788,
+          "u": 0.349259,
+          "v": 0.436246
+        },
+        {
+          "t": 134,
+          "seq": 26,
+          "event": "Loot",
+          "eventGroup": "loot",
+          "x": -55.6673,
+          "y": 107.5915,
+          "z": -80.3788,
+          "u": 0.349259,
+          "v": 0.436246
+        },
+        {
+          "t": 135,
+          "seq": 27,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -55.1178,
+          "y": 107.6063,
+          "z": -79.8483,
+          "u": 0.349869,
+          "v": 0.436835
+        },
+        {
+          "t": 140,
+          "seq": 28,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -59.4118,
+          "y": 106.3986,
+          "z": -86.63,
+          "u": 0.345098,
+          "v": 0.4293
+        },
+        {
+          "t": 145,
+          "seq": 29,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -62.4249,
+          "y": 103.7874,
+          "z": -104.654,
+          "u": 0.34175,
+          "v": 0.409273
+        },
+        {
+          "t": 150,
+          "seq": 30,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -70.4091,
+          "y": 102.4045,
+          "z": -124.9026,
+          "u": 0.332879,
+          "v": 0.386775
+        },
+        {
+          "t": 155,
+          "seq": 31,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -76.8345,
+          "y": 102.1791,
+          "z": -130.1404,
+          "u": 0.325739,
+          "v": 0.380955
+        },
+        {
+          "t": 160,
+          "seq": 32,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -78.1274,
+          "y": 102.0979,
+          "z": -126.2366,
+          "u": 0.324303,
+          "v": 0.385293
+        },
+        {
+          "t": 165,
+          "seq": 33,
+          "event": "BotKilled",
+          "eventGroup": "death",
+          "x": -77.4514,
+          "y": 102.4617,
+          "z": -117.1166,
+          "u": 0.325054,
+          "v": 0.395426
+        },
+        {
+          "t": 166,
+          "seq": 34,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -77.4924,
+          "y": 102.4375,
+          "z": -117.2867,
+          "u": 0.325008,
+          "v": 0.395237
+        }
+      ]
+    }
+  ]
+}

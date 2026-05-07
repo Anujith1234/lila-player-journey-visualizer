@@ -1,0 +1,103 @@
+{
+  "eventsByDate": {
+    "February_10": {
+      "Position": 19701,
+      "Loot": 4901,
+      "BotKilled": 254,
+      "KilledByStorm": 13,
+      "BotKill": 998,
+      "BotPosition": 7816,
+      "Kill": 2,
+      "Killed": 2
+    },
+    "February_11": {
+      "Position": 13354,
+      "Loot": 3272,
+      "BotKill": 666,
+      "Kill": 1,
+      "Killed": 1,
+      "BotKilled": 160,
+      "BotPosition": 3771,
+      "KilledByStorm": 10
+    },
+    "February_12": {
+      "Position": 9439,
+      "Loot": 2432,
+      "BotKill": 360,
+      "BotKilled": 155,
+      "BotPosition": 6039,
+      "KilledByStorm": 4
+    },
+    "February_13": {
+      "Position": 6612,
+      "Loot": 1593,
+      "BotKilled": 96,
+      "BotKill": 270,
+      "KilledByStorm": 10,
+      "BotPosition": 2525
+    },
+    "February_14": {
+      "Position": 2241,
+      "Loot": 687,
+      "BotKill": 121,
+      "BotKilled": 35,
+      "BotPosition": 1561,
+      "KilledByStorm": 2
+    }
+  },
+  "eventsByMap": {
+    "AmbroseValley": {
+      "Position": 36189,
+      "Loot": 9955,
+      "BotKilled": 486,
+      "BotKill": 1797,
+      "BotPosition": 12565,
+      "KilledByStorm": 17,
+      "Kill": 2,
+      "Killed": 2
+    },
+    "GrandRift": {
+      "Position": 3740,
+      "Loot": 880,
+      "KilledByStorm": 5,
+      "BotPosition": 1988,
+      "BotKilled": 46,
+      "BotKill": 192,
+      "Kill": 1,
+      "Killed": 1
+    },
+    "Lockdown": {
+      "Position": 11418,
+      "Loot": 2050,
+      "BotKill": 426,
+      "BotKilled": 168,
+      "BotPosition": 7159,
+      "KilledByStorm": 17
+    }
+  },
+  "eventsByPlayerType": {
+    "bot": {
+      "BotPosition": 21712,
+      "BotKilled": 297,
+      "BotKill": 183,
+      "Position": 636,
+      "Loot": 115
+    },
+    "human": {
+      "Position": 50711,
+      "Loot": 12770,
+      "BotKilled": 403,
+      "KilledByStorm": 39,
+      "BotKill": 2232,
+      "Kill": 3,
+      "Killed": 3
+    }
+  },
+  "eventGroups": {
+    "movement": 73059,
+    "loot": 12885,
+    "death": 703,
+    "storm_death": 39,
+    "kill": 2418
+  }
+}

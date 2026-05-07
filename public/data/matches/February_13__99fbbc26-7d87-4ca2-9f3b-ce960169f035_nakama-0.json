@@ -1,0 +1,96 @@
+{
+  "matchKey": "February_13__99fbbc26-7d87-4ca2-9f3b-ce960169f035.nakama-0",
+  "matchId": "99fbbc26-7d87-4ca2-9f3b-ce960169f035.nakama-0",
+  "date": "February_13",
+  "mapId": "Lockdown",
+  "durationMs": 127,
+  "summary": {
+    "playerCount": 1,
+    "humanCount": 1,
+    "botCount": 0,
+    "eventCount": 6,
+    "events": {
+      "Position": 5,
+      "BotKilled": 1
+    },
+    "eventGroups": {
+      "movement": 5,
+      "death": 1
+    }
+  },
+  "players": [
+    {
+      "userId": "0e070271-33e4-4cb8-9743-81fa26cab07f",
+      "playerType": "human",
+      "eventCount": 6,
+      "events": [
+        {
+          "t": 0,
+          "seq": 0,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -234.8894,
+          "y": 49.0753,
+          "z": 186.3067,
+          "u": 0.265111,
+          "v": 0.686307
+        },
+        {
+          "t": 25,
+          "seq": 1,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -230.0355,
+          "y": 49.0753,
+          "z": 182.0169,
+          "u": 0.269965,
+          "v": 0.682017
+        },
+        {
+          "t": 31,
+          "seq": 2,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -217.8446,
+          "y": 49.8261,
+          "z": 175.7732,
+          "u": 0.282155,
+          "v": 0.675773
+        },
+        {
+          "t": 36,
+          "seq": 3,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -224.6429,
+          "y": 49.0753,
+          "z": 191.3515,
+          "u": 0.275357,
+          "v": 0.691352
+        },
+        {
+          "t": 46,
+          "seq": 4,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -222.5665,
+          "y": 49.0753,
+          "z": 188.1777,
+          "u": 0.277433,
+          "v": 0.688178
+        },
+        {
+          "t": 127,
+          "seq": 5,
+          "event": "BotKilled",
+          "eventGroup": "death",
+          "x": -222.5665,
+          "y": 49.0753,
+          "z": 188.0149,
+          "u": 0.277433,
+          "v": 0.688015
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "matchKey": "February_12__f23d2181-4ad5-4ca7-9446-2113c1bc2b2d.nakama-0",
+  "matchId": "f23d2181-4ad5-4ca7-9446-2113c1bc2b2d.nakama-0",
+  "date": "February_12",
+  "mapId": "Lockdown",
+  "durationMs": 35,
+  "summary": {
+    "playerCount": 1,
+    "humanCount": 1,
+    "botCount": 0,
+    "eventCount": 5,
+    "events": {
+      "Position": 4,
+      "BotKilled": 1
+    },
+    "eventGroups": {
+      "movement": 4,
+      "death": 1
+    }
+  },
+  "players": [
+    {
+      "userId": "b69ca9d6-d27d-4a61-b6d8-6e747cee8f79",
+      "playerType": "human",
+      "eventCount": 5,
+      "events": [
+        {
+          "t": 0,
+          "seq": 0,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -124.9176,
+          "y": 52.3694,
+          "z": 84.6589,
+          "u": 0.375082,
+          "v": 0.584659
+        },
+        {
+          "t": 25,
+          "seq": 1,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -117.5065,
+          "y": 50.882,
+          "z": 86.5673,
+          "u": 0.382494,
+          "v": 0.586567
+        },
+        {
+          "t": 30,
+          "seq": 2,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -95.2818,
+          "y": 47.7621,
+          "z": 82.0943,
+          "u": 0.404718,
+          "v": 0.582094
+        },
+        {
+          "t": 33,
+          "seq": 3,
+          "event": "BotKilled",
+          "eventGroup": "death",
+          "x": -92.4615,
+          "y": 47.4401,
+          "z": 83.1382,
+          "u": 0.407539,
+          "v": 0.583138
+        },
+        {
+          "t": 35,
+          "seq": 4,
+          "event": "Position",
+          "eventGroup": "movement",
+          "x": -92.4615,
+          "y": 47.4401,
+          "z": 83.1382,
+          "u": 0.407539,
+          "v": 0.583138
+        }
+      ]
+    }
+  ]
+}
