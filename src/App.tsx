@@ -13,6 +13,18 @@ import {
   type LayerVisibility,
 } from "./utils/telemetryLayers";
 
+const PLAYBACK_TIME_SCALE = 0.2;
+
+function formatTimelineTime(milliseconds: number): string {
+  const totalSeconds = Math.floor(milliseconds / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  const millis = Math.floor(milliseconds % 1000);
+
+  return `${minutes}:${seconds.toString().padStart(2, "0")}.${Math.floor(
+    millis / 100,
+  )}`;
+}
 
 function App() {
   const [manifest, setManifest] = useState<Manifest | null>(null);
@@ -32,6 +44,9 @@ function App() {
     deaths: true,
     stormDeaths: true,
   });
+  const [currentTimeMs, setCurrentTimeMs] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [playbackSpeed, setPlaybackSpeed] = useState(1);
 
   function toggleLayer(layer: keyof LayerVisibility) {
     setLayerVisibility((current) => ({
@@ -103,6 +118,8 @@ function App() {
     setIsMatchLoading(true);
     setMatchLoadError(null);
     setMatchTelemetry(null);
+    setCurrentTimeMs(0);
+    setIsPlaying(false);
 
     loadMatchTelemetry(selectedMatch.matchFile)
       .then((data) => {
@@ -129,15 +146,38 @@ function App() {
     };
   }, [selectedMatch]);
 
+  const timelineMaxMs = matchTelemetry?.durationMs ?? selectedMatch?.durationMs ?? 0;
+
   const visiblePaths = useMemo(() => {
     if (!matchTelemetry) return [];
-    return buildPlayerPaths(matchTelemetry.players, layerVisibility);
-  }, [matchTelemetry, layerVisibility]);
+    return buildPlayerPaths(matchTelemetry.players, layerVisibility, currentTimeMs);
+  }, [matchTelemetry, layerVisibility, currentTimeMs]);
 
   const visibleMarkers = useMemo(() => {
     if (!matchTelemetry) return [];
-    return buildEventMarkers(matchTelemetry.players, layerVisibility);
-  }, [matchTelemetry, layerVisibility]);
+    return buildEventMarkers(matchTelemetry.players, layerVisibility, currentTimeMs);
+  }, [matchTelemetry, layerVisibility, currentTimeMs]);
+
+  useEffect(() => {
+    if (!isPlaying || !matchTelemetry) return;
+
+    const interval = window.setInterval(() => {
+      setCurrentTimeMs((current) => {
+        const next = current + 16 * playbackSpeed * PLAYBACK_TIME_SCALE;
+
+        if (next >= timelineMaxMs) {
+          setIsPlaying(false);
+          return timelineMaxMs;
+        }
+
+        return next;
+      });
+    }, 16);
+
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, [isPlaying, matchTelemetry, playbackSpeed, timelineMaxMs]);
 
   if (loadError) {
     return (
@@ -369,8 +409,8 @@ function App() {
 
                     {!isMatchLoading && !matchLoadError && matchTelemetry && (
                       <div className="map-status-card">
-                        <strong>{visiblePaths.length}</strong> paths ·{" "}
-                        <strong>{visibleMarkers.length}</strong> markers
+                        <strong>{visiblePaths.length}</strong> active paths ·{" "}
+                        <strong>{visibleMarkers.length}</strong> visible markers
                       </div>
                     )}
                   </div>
@@ -399,6 +439,65 @@ function App() {
               </div>
             </div>
           )}
+        </div>
+
+        <div className="timeline-panel">
+          <div className="timeline-header">
+            <div>
+              <p className="eyebrow">Timeline</p>
+              <strong>
+                {formatTimelineTime(currentTimeMs)} /{" "}
+                {formatTimelineTime(timelineMaxMs)}
+              </strong>
+            </div>
+
+            <div className="timeline-actions">
+              <button
+                type="button"
+                onClick={() => setIsPlaying((current) => !current)}
+                disabled={!matchTelemetry || timelineMaxMs <= 0}
+              >
+                {isPlaying ? "Pause" : "Play"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentTimeMs(0);
+                  setIsPlaying(false);
+                }}
+                disabled={!matchTelemetry}
+              >
+                Reset
+              </button>
+
+              <select
+                value={playbackSpeed}
+                onChange={(event) => setPlaybackSpeed(Number(event.target.value))}
+                disabled={!matchTelemetry}
+                aria-label="Playback speed"
+              >
+                <option value={0.5}>0.5x</option>
+                <option value={1}>1x</option>
+                <option value={2}>2x</option>
+                <option value={4}>4x</option>
+              </select>
+            </div>
+          </div>
+
+          <input
+            className="timeline-slider"
+            type="range"
+            min={0}
+            max={Math.max(timelineMaxMs, 1)}
+            step={1}
+            value={Math.min(currentTimeMs, Math.max(timelineMaxMs, 1))}
+            onChange={(event) => {
+              setCurrentTimeMs(Number(event.target.value));
+              setIsPlaying(false);
+            }}
+            disabled={!matchTelemetry}
+          />
         </div>
       </section>
 

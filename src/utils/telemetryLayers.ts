@@ -66,9 +66,20 @@ export function shouldShowPlayerType(
   return visibility.bots;
 }
 
+export function shouldShowMarkerKind(
+  kind: MarkerKind,
+  visibility: LayerVisibility,
+): boolean {
+  if (kind === "loot") return visibility.loot;
+  if (kind === "kill") return visibility.kills;
+  if (kind === "death") return visibility.deaths;
+  return visibility.stormDeaths;
+}
+
 export function buildPlayerPaths(
   players: TelemetryPlayer[],
   visibility: LayerVisibility,
+  currentTimeMs?: number,
 ): PlayerPath[] {
   if (!visibility.paths) return [];
 
@@ -77,6 +88,7 @@ export function buildPlayerPaths(
     .map((player) => {
       const points = player.events
         .filter((event) => isMovementEvent(event.event))
+        .filter((event) => currentTimeMs === undefined || event.t <= currentTimeMs)
         .sort((a, b) => a.seq - b.seq)
         .map((event) => ({
           u: event.u,
@@ -96,6 +108,7 @@ export function buildPlayerPaths(
 export function buildEventMarkers(
   players: TelemetryPlayer[],
   visibility: LayerVisibility,
+  currentTimeMs?: number,
 ): EventMarker[] {
   const markers: EventMarker[] = [];
 
@@ -103,13 +116,12 @@ export function buildEventMarkers(
     if (!shouldShowPlayerType(player.playerType, visibility)) continue;
 
     for (const event of player.events) {
+      if (currentTimeMs !== undefined && event.t > currentTimeMs) continue;
+
       const kind = getMarkerKind(event.event);
       if (!kind) continue;
 
-      if (kind === "loot" && !visibility.loot) continue;
-      if (kind === "kill" && !visibility.kills) continue;
-      if (kind === "death" && !visibility.deaths) continue;
-      if (kind === "storm_death" && !visibility.stormDeaths) continue;
+      if (!shouldShowMarkerKind(kind, visibility)) continue;
 
       markers.push({
         id: `${player.userId}-${event.seq}-${event.event}-${event.t}`,

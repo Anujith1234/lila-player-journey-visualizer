@@ -247,6 +247,7 @@ select {
 }
 
 .map-status-card {
+  max-width: min(420px, calc(100vw - 72px));
   padding: 10px 12px;
   border-radius: 999px;
   background: rgba(7, 9, 17, 0.78);
@@ -254,6 +255,56 @@ select {
   color: #dce4ff;
   font-size: 0.86rem;
   backdrop-filter: blur(10px);
+}
+
+.timeline-panel {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.timeline-header strong {
+  font-size: 1rem;
+}
+
+.timeline-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.timeline-actions button,
+.timeline-actions select {
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: #111626;
+  color: #f4f7fb;
+  font: inherit;
+  cursor: pointer;
+}
+
+.timeline-actions button:disabled,
+.timeline-actions select:disabled,
+.timeline-slider:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.timeline-slider {
+  width: 100%;
+  accent-color: #9fb0ff;
 }
 
 .layer-panel,
