@@ -171,13 +171,163 @@ select {
   background: rgba(255, 255, 255, 0.035);
 }
 
+.map-frame {
+  position: relative;
+  width: min(100%, calc(100vh - 190px));
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+}
+
 .minimap-image {
   width: 100%;
-  max-width: 100%;
-  max-height: calc(100vh - 190px);
+  height: 100%;
   object-fit: contain;
   display: block;
   opacity: 0.92;
+}
+
+.telemetry-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.player-path {
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.78;
+}
+
+.player-path--human {
+  stroke: #78e6ff;
+}
+
+.player-path--bot {
+  stroke: #ffca6e;
+  stroke-dasharray: 8 7;
+  opacity: 0.52;
+}
+
+.event-marker {
+  stroke: #080a12;
+  stroke-width: 2.5;
+  opacity: 0.92;
+}
+
+.event-marker--loot {
+  fill: #8cff9f;
+}
+
+.event-marker--kill {
+  fill: #ff5d73;
+}
+
+.event-marker--death {
+  fill: #d9d4ff;
+}
+
+.event-marker--storm_death {
+  fill: #b973ff;
+}
+
+.event-marker--bot {
+  opacity: 0.72;
+}
+
+.map-status-overlay {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  pointer-events: none;
+}
+
+.map-status-card {
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(7, 9, 17, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #dce4ff;
+  font-size: 0.86rem;
+  backdrop-filter: blur(10px);
+}
+
+.layer-panel,
+.legend-card {
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  color: #d7dced;
+  font-size: 0.92rem;
+}
+
+.toggle-row input {
+  width: 16px;
+  height: 16px;
+  accent-color: #9fb0ff;
+}
+
+.legend-list {
+  display: grid;
+  gap: 10px;
+}
+
+.legend-list span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #d7dced;
+  font-size: 0.88rem;
+}
+
+.legend-line {
+  width: 26px;
+  height: 0;
+  border-top: 3px solid;
+}
+
+.legend-line--human {
+  border-color: #78e6ff;
+}
+
+.legend-line--bot {
+  border-color: #ffca6e;
+  border-top-style: dashed;
+}
+
+.legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  display: inline-block;
+  border: 2px solid #080a12;
+}
+
+.legend-dot--loot {
+  background: #8cff9f;
+}
+
+.legend-dot--kill {
+  background: #ff5d73;
+}
+
+.legend-dot--death {
+  background: #d9d4ff;
+}
+
+.legend-dot--storm {
+  background: #b973ff;
 }
 
 .map-overlay-placeholder {

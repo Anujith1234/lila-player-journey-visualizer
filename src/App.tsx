@@ -7,6 +7,12 @@ import type {
   MapId,
   MatchTelemetry,
 } from "./types/telemetry";
+import {
+  buildEventMarkers,
+  buildPlayerPaths,
+  type LayerVisibility,
+} from "./utils/telemetryLayers";
+
 
 function App() {
   const [manifest, setManifest] = useState<Manifest | null>(null);
@@ -17,6 +23,22 @@ function App() {
   const [matchTelemetry, setMatchTelemetry] = useState<MatchTelemetry | null>(null);
   const [matchLoadError, setMatchLoadError] = useState<string | null>(null);
   const [isMatchLoading, setIsMatchLoading] = useState(false);
+  const [layerVisibility, setLayerVisibility] = useState<LayerVisibility>({
+    humans: true,
+    bots: true,
+    paths: true,
+    loot: true,
+    kills: true,
+    deaths: true,
+    stormDeaths: true,
+  });
+
+  function toggleLayer(layer: keyof LayerVisibility) {
+    setLayerVisibility((current) => ({
+      ...current,
+      [layer]: !current[layer],
+    }));
+  }
 
   useEffect(() => {
     loadManifest()
@@ -105,6 +127,16 @@ function App() {
       isCancelled = true;
     };
   }, [selectedMatch]);
+
+  const visiblePaths = useMemo(() => {
+    if (!matchTelemetry) return [];
+    return buildPlayerPaths(matchTelemetry.players, layerVisibility);
+  }, [matchTelemetry, layerVisibility]);
+
+  const visibleMarkers = useMemo(() => {
+    if (!matchTelemetry) return [];
+    return buildEventMarkers(matchTelemetry.players, layerVisibility);
+  }, [matchTelemetry, layerVisibility]);
 
   if (loadError) {
     return (
@@ -197,6 +229,73 @@ function App() {
           <span>Filtered matches</span>
           <strong>{filteredMatches.length}</strong>
         </div>
+
+        <div className="layer-panel">
+          <p className="eyebrow">Layers</p>
+
+          <label className="toggle-row">
+            <input
+              type="checkbox"
+              checked={layerVisibility.humans}
+              onChange={() => toggleLayer("humans")}
+            />
+            <span>Humans</span>
+          </label>
+
+          <label className="toggle-row">
+            <input
+              type="checkbox"
+              checked={layerVisibility.bots}
+              onChange={() => toggleLayer("bots")}
+            />
+            <span>Bots</span>
+          </label>
+
+          <label className="toggle-row">
+            <input
+              type="checkbox"
+              checked={layerVisibility.paths}
+              onChange={() => toggleLayer("paths")}
+            />
+            <span>Movement paths</span>
+          </label>
+
+          <label className="toggle-row">
+            <input
+              type="checkbox"
+              checked={layerVisibility.loot}
+              onChange={() => toggleLayer("loot")}
+            />
+            <span>Loot markers</span>
+          </label>
+
+          <label className="toggle-row">
+            <input
+              type="checkbox"
+              checked={layerVisibility.kills}
+              onChange={() => toggleLayer("kills")}
+            />
+            <span>Kill markers</span>
+          </label>
+
+          <label className="toggle-row">
+            <input
+              type="checkbox"
+              checked={layerVisibility.deaths}
+              onChange={() => toggleLayer("deaths")}
+            />
+            <span>Death markers</span>
+          </label>
+
+          <label className="toggle-row">
+            <input
+              type="checkbox"
+              checked={layerVisibility.stormDeaths}
+              onChange={() => toggleLayer("stormDeaths")}
+            />
+            <span>Storm deaths</span>
+          </label>
+        </div>
       </aside>
 
       <section className="main-panel panel">
@@ -217,11 +316,64 @@ function App() {
           {selectedMatch ? (
             <>
               {manifest.minimaps[selectedMatch.mapId] ? (
-                <img
-                  className="minimap-image"
-                  src={`/minimaps/${manifest.minimaps[selectedMatch.mapId].file}`}
-                  alt={`${selectedMatch.mapId} minimap`}
-                />
+                <div className="map-frame">
+                  <img
+                    className="minimap-image"
+                    src={`/minimaps/${manifest.minimaps[selectedMatch.mapId].file}`}
+                    alt={`${selectedMatch.mapId} minimap`}
+                  />
+
+                  <svg
+                    className="telemetry-overlay"
+                    viewBox="0 0 1000 1000"
+                    preserveAspectRatio="none"
+                    aria-label="Telemetry overlay"
+                  >
+                    {visiblePaths.map((path) => (
+                      <polyline
+                        key={path.userId}
+                        className={`player-path player-path--${path.playerType}`}
+                        points={path.points
+                          .map(
+                            (point) =>
+                              `${point.u * 1000},${(1 - point.v) * 1000}`,
+                          )
+                          .join(" ")}
+                      />
+                    ))}
+
+                    {visibleMarkers.map((marker) => (
+                      <circle
+                        key={marker.id}
+                        className={`event-marker event-marker--${marker.kind} event-marker--${marker.playerType}`}
+                        cx={marker.u * 1000}
+                        cy={(1 - marker.v) * 1000}
+                        r={marker.kind === "storm_death" ? 8 : 6}
+                      >
+                        <title>
+                          {`${marker.event} · ${
+                            marker.playerType
+                          } · x:${marker.x.toFixed(1)}, z:${marker.z.toFixed(1)}`}
+                        </title>
+                      </circle>
+                    ))}
+                  </svg>
+
+                  <div className="map-status-overlay">
+                    {isMatchLoading && <span>Loading selected match…</span>}
+
+                    {matchLoadError && (
+                      <span className="error-text">{matchLoadError}</span>
+                    )}
+
+                    {!isMatchLoading && !matchLoadError && matchTelemetry && (
+                      <div className="map-status-card">
+                        <strong>{visiblePaths.length}</strong> paths ·{" "}
+                        <strong>{visibleMarkers.length}</strong> markers
+                      </div>
+                    )}
+                  </div>
+                </div>
               ) : (
                 <div className="map-placeholder">
                   <div>
@@ -234,25 +386,6 @@ function App() {
                   </div>
                 </div>
               )}
-
-              <div className="map-overlay-placeholder">
-                {isMatchLoading && <span>Loading selected match…</span>}
-
-                {matchLoadError && (
-                  <span className="error-text">{matchLoadError}</span>
-                )}
-
-                {!isMatchLoading && !matchLoadError && matchTelemetry && (
-                  <div className="map-ready-card">
-                    <p className="eyebrow">Match Loaded</p>
-                    <h3>{matchTelemetry.players.length} tracked entities</h3>
-                    <p>
-                      {matchTelemetry.summary.eventCount.toLocaleString()} telemetry
-                      events loaded for the selected match.
-                    </p>
-                  </div>
-                )}
-              </div>
             </>
           ) : (
             <div className="map-placeholder">
@@ -298,6 +431,30 @@ function App() {
           </div>
         </div>
 
+        <div className="legend-card">
+          <p className="eyebrow">Legend</p>
+          <div className="legend-list">
+            <span>
+              <i className="legend-line legend-line--human" /> Human path
+            </span>
+            <span>
+              <i className="legend-line legend-line--bot" /> Bot path
+            </span>
+            <span>
+              <i className="legend-dot legend-dot--loot" /> Loot
+            </span>
+            <span>
+              <i className="legend-dot legend-dot--kill" /> Kill
+            </span>
+            <span>
+              <i className="legend-dot legend-dot--death" /> Death
+            </span>
+            <span>
+              <i className="legend-dot legend-dot--storm" /> Storm death
+            </span>
+          </div>
+        </div>
+        
         <div className="selected-card">
           <p className="eyebrow">Selected Match</p>
           {selectedMatch ? (
