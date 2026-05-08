@@ -1,0 +1,1500 @@
+{
+  "dataset": {
+    "filesTotal": 1243,
+    "rowsTotal": 89104,
+    "matchCount": 797,
+    "playerCount": 339,
+    "humanCount": 245,
+    "botCount": 94
+  },
+  "maps": [
+    "AmbroseValley",
+    "GrandRift",
+    "Lockdown"
+  ],
+  "dates": [
+    "February_10",
+    "February_11",
+    "February_12",
+    "February_13",
+    "February_14"
+  ],
+  "mapSummary": {
+    "AmbroseValley": {
+      "matchCount": 567,
+      "eventCount": 61013,
+      "playerCountTotal": 837,
+      "humanCountTotal": 555,
+      "botCountTotal": 282,
+      "events": {
+        "BotKill": 1797,
+        "BotKilled": 486,
+        "BotPosition": 12565,
+        "Kill": 2,
+        "Killed": 2,
+        "KilledByStorm": 17,
+        "Loot": 9955,
+        "Position": 36189
+      },
+      "eventGroups": {
+        "death": 488,
+        "kill": 1799,
+        "loot": 9955,
+        "movement": 48754,
+        "storm_death": 17
+      },
+      "avgEventsPerMatch": 107.61,
+      "avgTrackedEntitiesPerMatch": 1.48,
+      "avgHumansPerMatch": 0.98,
+      "avgBotsPerMatch": 0.5
+    },
+    "GrandRift": {
+      "matchCount": 59,
+      "eventCount": 6853,
+      "playerCountTotal": 111,
+      "humanCountTotal": 57,
+      "botCountTotal": 54,
+      "events": {
+        "BotKill": 192,
+        "BotKilled": 46,
+        "BotPosition": 1988,
+        "Kill": 1,
+        "Killed": 1,
+        "KilledByStorm": 5,
+        "Loot": 880,
+        "Position": 3740
+      },
+      "eventGroups": {
+        "death": 47,
+        "kill": 193,
+        "loot": 880,
+        "movement": 5728,
+        "storm_death": 5
+      },
+      "avgEventsPerMatch": 116.15,
+      "avgTrackedEntitiesPerMatch": 1.88,
+      "avgHumansPerMatch": 0.97,
+      "avgBotsPerMatch": 0.92
+    },
+    "Lockdown": {
+      "matchCount": 171,
+      "eventCount": 21238,
+      "playerCountTotal": 295,
+      "humanCountTotal": 170,
+      "botCountTotal": 125,
+      "events": {
+        "BotKill": 426,
+        "BotKilled": 168,
+        "BotPosition": 7159,
+        "KilledByStorm": 17,
+        "Loot": 2050,
+        "Position": 11418
+      },
+      "eventGroups": {
+        "death": 168,
+        "kill": 426,
+        "loot": 2050,
+        "movement": 18577,
+        "storm_death": 17
+      },
+      "avgEventsPerMatch": 124.2,
+      "avgTrackedEntitiesPerMatch": 1.73,
+      "avgHumansPerMatch": 0.99,
+      "avgBotsPerMatch": 0.73
+    }
+  },
+  "topMatchesByEventCount": [
+    {
+      "matchKey": "February_12__d0a38c30-d476-4305-857d-ece9e65f72e6.nakama-0",
+      "matchId": "d0a38c30-d476-4305-857d-ece9e65f72e6.nakama-0",
+      "matchFile": "matches/February_12__d0a38c30-d476-4305-857d-ece9e65f72e6_nakama-0.json",
+      "date": "February_12",
+      "mapId": "Lockdown",
+      "durationMs": 734,
+      "playerCount": 15,
+      "humanCount": 1,
+      "botCount": 14,
+      "eventCount": 1216,
+      "events": {
+        "Position": 87,
+        "BotPosition": 1087,
+        "Loot": 25,
+        "BotKill": 6,
+        "BotKilled": 11
+      },
+      "eventGroups": {
+        "movement": 1174,
+        "loot": 25,
+        "kill": 6,
+        "death": 11
+      }
+    },
+    {
+      "matchKey": "February_12__de5aa1ae-6246-4cfb-9941-adf5996ef678.nakama-0",
+      "matchId": "de5aa1ae-6246-4cfb-9941-adf5996ef678.nakama-0",
+      "matchFile": "matches/February_12__de5aa1ae-6246-4cfb-9941-adf5996ef678_nakama-0.json",
+      "date": "February_12",
+      "mapId": "AmbroseValley",
+      "durationMs": 759,
+      "playerCount": 15,
+      "humanCount": 0,
+      "botCount": 15,
+      "eventCount": 1124,
+      "events": {
+        "Position": 120,
+        "BotPosition": 953,
+        "Loot": 28,
+        "BotKill": 12,
+        "BotKilled": 11
+      },
+      "eventGroups": {
+        "movement": 1073,
+        "loot": 28,
+        "kill": 12,
+        "death": 11
+      }
+    },
+    {
+      "matchKey": "February_10__d3a3297e-2cdf-4a49-8450-09119b91a779.nakama-0",
+      "matchId": "d3a3297e-2cdf-4a49-8450-09119b91a779.nakama-0",
+      "matchFile": "matches/February_10__d3a3297e-2cdf-4a49-8450-09119b91a779_nakama-0.json",
+      "date": "February_10",
+      "mapId": "AmbroseValley",
+      "durationMs": 795,
+      "playerCount": 14,
+      "humanCount": 1,
+      "botCount": 13,
+      "eventCount": 1097,
+      "events": {
+        "Position": 220,
+        "BotPosition": 787,
+        "BotKilled": 10,
+        "BotKill": 12,
+        "Loot": 68
+      },
+      "eventGroups": {
+        "movement": 1007,
+        "death": 10,
+        "kill": 12,
+        "loot": 68
+      }
+    },
+    {
+      "matchKey": "February_10__b971c686-07f6-4378-ad00-71b0b610414e.nakama-0",
+      "matchId": "b971c686-07f6-4378-ad00-71b0b610414e.nakama-0",
+      "matchFile": "matches/February_10__b971c686-07f6-4378-ad00-71b0b610414e_nakama-0.json",
+      "date": "February_10",
+      "mapId": "AmbroseValley",
+      "durationMs": 729,
+      "playerCount": 15,
+      "humanCount": 1,
+      "botCount": 14,
+      "eventCount": 1052,
+      "events": {
+        "BotPosition": 882,
+        "Position": 112,
+        "Loot": 32,
+        "BotKill": 15,
+        "BotKilled": 11
+      },
+      "eventGroups": {
+        "movement": 994,
+        "loot": 32,
+        "kill": 15,
+        "death": 11
+      }
+    },
+    {
+      "matchKey": "February_12__fbbc5d02-dd79-42fb-bba5-d768023891c8.nakama-0",
+      "matchId": "fbbc5d02-dd79-42fb-bba5-d768023891c8.nakama-0",
+      "matchFile": "matches/February_12__fbbc5d02-dd79-42fb-bba5-d768023891c8_nakama-0.json",
+      "date": "February_12",
+      "mapId": "AmbroseValley",
+      "durationMs": 523,
+      "playerCount": 16,
+      "humanCount": 1,
+      "botCount": 15,
+      "eventCount": 1015,
+      "events": {
+        "Position": 44,
+        "BotPosition": 951,
+        "Loot": 7,
+        "BotKill": 5,
+        "BotKilled": 8
+      },
+      "eventGroups": {
+        "movement": 995,
+        "loot": 7,
+        "kill": 5,
+        "death": 8
+      }
+    },
+    {
+      "matchKey": "February_10__413b9011-a43d-4957-a485-261668c9857b.nakama-0",
+      "matchId": "413b9011-a43d-4957-a485-261668c9857b.nakama-0",
+      "matchFile": "matches/February_10__413b9011-a43d-4957-a485-261668c9857b_nakama-0.json",
+      "date": "February_10",
+      "mapId": "Lockdown",
+      "durationMs": 523,
+      "playerCount": 14,
+      "humanCount": 1,
+      "botCount": 13,
+      "eventCount": 989,
+      "events": {
+        "BotPosition": 956,
+        "Position": 22,
+        "BotKilled": 7,
+        "BotKill": 4
+      },
+      "eventGroups": {
+        "movement": 978,
+        "death": 7,
+        "kill": 4
+      }
+    },
+    {
+      "matchKey": "February_11__ed07a212-8b5b-47ec-b110-3bfbec14d5b6.nakama-0",
+      "matchId": "ed07a212-8b5b-47ec-b110-3bfbec14d5b6.nakama-0",
+      "matchFile": "matches/February_11__ed07a212-8b5b-47ec-b110-3bfbec14d5b6_nakama-0.json",
+      "date": "February_11",
+      "mapId": "Lockdown",
+      "durationMs": 535,
+      "playerCount": 15,
+      "humanCount": 1,
+      "botCount": 14,
+      "eventCount": 975,
+      "events": {
+        "BotPosition": 855,
+        "Position": 79,
+        "Loot": 17,
+        "BotKill": 9,
+        "BotKilled": 15
+      },
+      "eventGroups": {
+        "movement": 934,
+        "loot": 17,
+        "kill": 9,
+        "death": 15
+      }
+    },
+    {
+      "matchKey": "February_10__ead4c72d-0e3b-49b4-a91b-a9a21bed8012.nakama-0",
+      "matchId": "ead4c72d-0e3b-49b4-a91b-a9a21bed8012.nakama-0",
+      "matchFile": "matches/February_10__ead4c72d-0e3b-49b4-a91b-a9a21bed8012_nakama-0.json",
+      "date": "February_10",
+      "mapId": "Lockdown",
+      "durationMs": 694,
+      "playerCount": 14,
+      "humanCount": 1,
+      "botCount": 13,
+      "eventCount": 954,
+      "events": {
+        "BotPosition": 799,
+        "Position": 115,
+        "Loot": 21,
+        "BotKilled": 11,
+        "BotKill": 8
+      },
+      "eventGroups": {
+        "movement": 914,
+        "loot": 21,
+        "death": 11,
+        "kill": 8
+      }
+    },
+    {
+      "matchKey": "February_10__41d4555d-1ca9-4e3d-b82f-168bef19d865.nakama-0",
+      "matchId": "41d4555d-1ca9-4e3d-b82f-168bef19d865.nakama-0",
+      "matchFile": "matches/February_10__41d4555d-1ca9-4e3d-b82f-168bef19d865_nakama-0.json",
+      "date": "February_10",
+      "mapId": "AmbroseValley",
+      "durationMs": 523,
+      "playerCount": 15,
+      "humanCount": 0,
+      "botCount": 15,
+      "eventCount": 932,
+      "events": {
+        "Position": 67,
+        "BotPosition": 847,
+        "Loot": 4,
+        "BotKilled": 11,
+        "BotKill": 3
+      },
+      "eventGroups": {
+        "movement": 914,
+        "loot": 4,
+        "death": 11,
+        "kill": 3
+      }
+    },
+    {
+      "matchKey": "February_10__ff73c97b-3b34-4836-a8a1-47b2f94dd77c.nakama-0",
+      "matchId": "ff73c97b-3b34-4836-a8a1-47b2f94dd77c.nakama-0",
+      "matchFile": "matches/February_10__ff73c97b-3b34-4836-a8a1-47b2f94dd77c_nakama-0.json",
+      "date": "February_10",
+      "mapId": "AmbroseValley",
+      "durationMs": 699,
+      "playerCount": 15,
+      "humanCount": 1,
+      "botCount": 14,
+      "eventCount": 921,
+      "events": {
+        "Position": 56,
+        "BotPosition": 838,
+        "Loot": 10,
+        "BotKill": 7,
+        "BotKilled": 10
+      },
+      "eventGroups": {
+        "movement": 894,
+        "loot": 10,
+        "kill": 7,
+        "death": 10
+      }
+    }
+  ],
+  "heatmapSummary": {
+    "traffic": {
+      "topAll": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 25,
+          "cellY": 13,
+          "centerU": 0.398438,
+          "centerV": 0.210938,
+          "count": 188
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 138
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 132
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 25,
+          "cellY": 13,
+          "centerU": 0.398438,
+          "centerV": 0.210938,
+          "count": 130
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 129
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 25,
+          "cellY": 13,
+          "centerU": 0.398438,
+          "centerV": 0.210938,
+          "count": 128
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 32,
+          "cellY": 27,
+          "centerU": 0.507812,
+          "centerV": 0.429688,
+          "count": 126
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 38,
+          "cellY": 39,
+          "centerU": 0.601562,
+          "centerV": 0.617188,
+          "count": 115
+        }
+      ],
+      "topHuman": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 25,
+          "cellY": 13,
+          "centerU": 0.398438,
+          "centerV": 0.210938,
+          "count": 171
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 125
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 25,
+          "cellY": 13,
+          "centerU": 0.398438,
+          "centerV": 0.210938,
+          "count": 125
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 124
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 25,
+          "cellY": 13,
+          "centerU": 0.398438,
+          "centerV": 0.210938,
+          "count": 124
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 32,
+          "cellY": 27,
+          "centerU": 0.507812,
+          "centerV": 0.429688,
+          "count": 120
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 38,
+          "cellY": 39,
+          "centerU": 0.601562,
+          "centerV": 0.617188,
+          "count": 108
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 26,
+          "cellY": 13,
+          "centerU": 0.414062,
+          "centerV": 0.210938,
+          "count": 103
+        }
+      ],
+      "topBot": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 76
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 17,
+          "cellY": 51,
+          "centerU": 0.273438,
+          "centerV": 0.804688,
+          "count": 68
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 17,
+          "cellY": 37,
+          "centerU": 0.273438,
+          "centerV": 0.585938,
+          "count": 62
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 56
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 17,
+          "cellY": 37,
+          "centerU": 0.273438,
+          "centerV": 0.585938,
+          "count": 55
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 17,
+          "cellY": 36,
+          "centerU": 0.273438,
+          "centerV": 0.570312,
+          "count": 51
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 26,
+          "cellY": 32,
+          "centerU": 0.414062,
+          "centerV": 0.507812,
+          "count": 49
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 18,
+          "cellY": 37,
+          "centerU": 0.289062,
+          "centerV": 0.585938,
+          "count": 48
+        }
+      ]
+    },
+    "kills": {
+      "topAll": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 24,
+          "cellY": 32,
+          "centerU": 0.382812,
+          "centerV": 0.507812,
+          "count": 13
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 27,
+          "cellY": 33,
+          "centerU": 0.429688,
+          "centerV": 0.523438,
+          "count": 13
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 26,
+          "cellY": 31,
+          "centerU": 0.414062,
+          "centerV": 0.492188,
+          "count": 13
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 35,
+          "cellY": 30,
+          "centerU": 0.554688,
+          "centerV": 0.476562,
+          "count": 12
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 19,
+          "cellY": 30,
+          "centerU": 0.304688,
+          "centerV": 0.476562,
+          "count": 10
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 28,
+          "cellY": 30,
+          "centerU": 0.445312,
+          "centerV": 0.476562,
+          "count": 10
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 35,
+          "cellY": 28,
+          "centerU": 0.554688,
+          "centerV": 0.445312,
+          "count": 10
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 11,
+          "cellY": 10,
+          "centerU": 0.179688,
+          "centerV": 0.164062,
+          "count": 9
+        }
+      ],
+      "topHuman": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 24,
+          "cellY": 32,
+          "centerU": 0.382812,
+          "centerV": 0.507812,
+          "count": 13
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 26,
+          "cellY": 31,
+          "centerU": 0.414062,
+          "centerV": 0.492188,
+          "count": 13
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 27,
+          "cellY": 33,
+          "centerU": 0.429688,
+          "centerV": 0.523438,
+          "count": 12
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 35,
+          "cellY": 30,
+          "centerU": 0.554688,
+          "centerV": 0.476562,
+          "count": 12
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 19,
+          "cellY": 30,
+          "centerU": 0.304688,
+          "centerV": 0.476562,
+          "count": 10
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 28,
+          "cellY": 30,
+          "centerU": 0.445312,
+          "centerV": 0.476562,
+          "count": 10
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 35,
+          "cellY": 28,
+          "centerU": 0.554688,
+          "centerV": 0.445312,
+          "count": 10
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 11,
+          "cellY": 10,
+          "centerU": 0.179688,
+          "centerV": 0.164062,
+          "count": 9
+        }
+      ],
+      "topBot": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 3
+        },
+        {
+          "mapId": "GrandRift",
+          "date": "February_13",
+          "cellX": 32,
+          "cellY": 29,
+          "centerU": 0.507812,
+          "centerV": 0.460938,
+          "count": 3
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 16,
+          "cellY": 34,
+          "centerU": 0.257812,
+          "centerV": 0.539062,
+          "count": 2
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 18,
+          "cellY": 34,
+          "centerU": 0.289062,
+          "centerV": 0.539062,
+          "count": 2
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 20,
+          "cellY": 26,
+          "centerU": 0.320312,
+          "centerV": 0.414062,
+          "count": 2
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 21,
+          "cellY": 27,
+          "centerU": 0.335938,
+          "centerV": 0.429688,
+          "count": 2
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 24,
+          "cellY": 29,
+          "centerU": 0.382812,
+          "centerV": 0.460938,
+          "count": 2
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 27,
+          "cellY": 32,
+          "centerU": 0.429688,
+          "centerV": 0.507812,
+          "count": 2
+        }
+      ]
+    },
+    "deaths": {
+      "topAll": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 7
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 26,
+          "cellY": 32,
+          "centerU": 0.414062,
+          "centerV": 0.507812,
+          "count": 6
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 22,
+          "cellY": 28,
+          "centerU": 0.351562,
+          "centerV": 0.445312,
+          "count": 5
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 28,
+          "cellY": 32,
+          "centerU": 0.445312,
+          "centerV": 0.507812,
+          "count": 5
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 5
+        },
+        {
+          "mapId": "Lockdown",
+          "date": "February_11",
+          "cellX": 30,
+          "cellY": 24,
+          "centerU": 0.476562,
+          "centerV": 0.382812,
+          "count": 5
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 19,
+          "cellY": 30,
+          "centerU": 0.304688,
+          "centerV": 0.476562,
+          "count": 4
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 22,
+          "cellY": 28,
+          "centerU": 0.351562,
+          "centerV": 0.445312,
+          "count": 4
+        }
+      ],
+      "topHuman": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 28,
+          "cellY": 50,
+          "centerU": 0.445312,
+          "centerV": 0.789062,
+          "count": 3
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 33,
+          "cellY": 27,
+          "centerU": 0.523438,
+          "centerV": 0.429688,
+          "count": 3
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 20,
+          "cellY": 40,
+          "centerU": 0.320312,
+          "centerV": 0.632812,
+          "count": 3
+        },
+        {
+          "mapId": "Lockdown",
+          "date": "February_10",
+          "cellX": 26,
+          "cellY": 37,
+          "centerU": 0.414062,
+          "centerV": 0.585938,
+          "count": 3
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 16,
+          "cellY": 29,
+          "centerU": 0.257812,
+          "centerV": 0.460938,
+          "count": 2
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 18,
+          "cellY": 36,
+          "centerU": 0.289062,
+          "centerV": 0.570312,
+          "count": 2
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 19,
+          "cellY": 30,
+          "centerU": 0.304688,
+          "centerV": 0.476562,
+          "count": 2
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 21,
+          "cellY": 28,
+          "centerU": 0.335938,
+          "centerV": 0.445312,
+          "count": 2
+        }
+      ],
+      "topBot": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 26,
+          "cellY": 32,
+          "centerU": 0.414062,
+          "centerV": 0.507812,
+          "count": 6
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 5
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 5
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 28,
+          "cellY": 32,
+          "centerU": 0.445312,
+          "centerV": 0.507812,
+          "count": 4
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 22,
+          "cellY": 28,
+          "centerU": 0.351562,
+          "centerV": 0.445312,
+          "count": 4
+        },
+        {
+          "mapId": "Lockdown",
+          "date": "February_11",
+          "cellX": 30,
+          "cellY": 24,
+          "centerU": 0.476562,
+          "centerV": 0.382812,
+          "count": 4
+        },
+        {
+          "mapId": "Lockdown",
+          "date": "February_12",
+          "cellX": 27,
+          "cellY": 23,
+          "centerU": 0.429688,
+          "centerV": 0.367188,
+          "count": 4
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 22,
+          "cellY": 28,
+          "centerU": 0.351562,
+          "centerV": 0.445312,
+          "count": 3
+        }
+      ]
+    },
+    "loot": {
+      "topAll": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 117
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 101
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 23,
+          "cellY": 8,
+          "centerU": 0.367188,
+          "centerV": 0.132812,
+          "count": 86
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 75
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 23,
+          "cellY": 8,
+          "centerU": 0.367188,
+          "centerV": 0.132812,
+          "count": 68
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 25,
+          "cellY": 13,
+          "centerU": 0.398438,
+          "centerV": 0.210938,
+          "count": 65
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 10,
+          "cellY": 10,
+          "centerU": 0.164062,
+          "centerV": 0.164062,
+          "count": 62
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 39,
+          "cellY": 39,
+          "centerU": 0.617188,
+          "centerV": 0.617188,
+          "count": 62
+        }
+      ],
+      "topHuman": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 117
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 97
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 23,
+          "cellY": 8,
+          "centerU": 0.367188,
+          "centerV": 0.132812,
+          "count": 86
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 75
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 23,
+          "cellY": 8,
+          "centerU": 0.367188,
+          "centerV": 0.132812,
+          "count": 66
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 25,
+          "cellY": 13,
+          "centerU": 0.398438,
+          "centerV": 0.210938,
+          "count": 63
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 10,
+          "cellY": 10,
+          "centerU": 0.164062,
+          "centerV": 0.164062,
+          "count": 62
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 39,
+          "cellY": 39,
+          "centerU": 0.617188,
+          "centerV": 0.617188,
+          "count": 61
+        }
+      ],
+      "topBot": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 37,
+          "cellY": 29,
+          "centerU": 0.585938,
+          "centerV": 0.460938,
+          "count": 4
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 4
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 31,
+          "cellY": 47,
+          "centerU": 0.492188,
+          "centerV": 0.742188,
+          "count": 4
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_14",
+          "cellX": 26,
+          "cellY": 25,
+          "centerU": 0.414062,
+          "centerV": 0.398438,
+          "count": 4
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 15,
+          "cellY": 55,
+          "centerU": 0.242188,
+          "centerV": 0.867188,
+          "count": 3
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 36,
+          "cellY": 28,
+          "centerU": 0.570312,
+          "centerV": 0.445312,
+          "count": 3
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 43,
+          "cellY": 30,
+          "centerU": 0.679688,
+          "centerV": 0.476562,
+          "count": 3
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_12",
+          "cellX": 17,
+          "cellY": 38,
+          "centerU": 0.273438,
+          "centerV": 0.601562,
+          "count": 3
+        }
+      ]
+    },
+    "stormDeaths": {
+      "topAll": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 12,
+          "cellY": 17,
+          "centerU": 0.195312,
+          "centerV": 0.273438,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 18,
+          "cellY": 54,
+          "centerU": 0.289062,
+          "centerV": 0.851562,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 24,
+          "cellY": 19,
+          "centerU": 0.382812,
+          "centerV": 0.304688,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 27,
+          "cellY": 21,
+          "centerU": 0.429688,
+          "centerV": 0.335938,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 39,
+          "cellY": 10,
+          "centerU": 0.617188,
+          "centerV": 0.164062,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 28,
+          "cellY": 40,
+          "centerU": 0.445312,
+          "centerV": 0.632812,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 29,
+          "cellY": 20,
+          "centerU": 0.460938,
+          "centerV": 0.320312,
+          "count": 1
+        }
+      ],
+      "topHuman": [
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 12,
+          "cellY": 17,
+          "centerU": 0.195312,
+          "centerV": 0.273438,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 18,
+          "cellY": 54,
+          "centerU": 0.289062,
+          "centerV": 0.851562,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 24,
+          "cellY": 19,
+          "centerU": 0.382812,
+          "centerV": 0.304688,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 27,
+          "cellY": 21,
+          "centerU": 0.429688,
+          "centerV": 0.335938,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 39,
+          "cellY": 10,
+          "centerU": 0.617188,
+          "centerV": 0.164062,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 28,
+          "cellY": 40,
+          "centerU": 0.445312,
+          "centerV": 0.632812,
+          "count": 1
+        },
+        {
+          "mapId": "AmbroseValley",
+          "date": "February_11",
+          "cellX": 29,
+          "cellY": 20,
+          "centerU": 0.460938,
+          "centerV": 0.320312,
+          "count": 1
+        }
+      ],
+      "topBot": []
+    }
+  },
+  "candidateInsights": [
+    {
+      "title": "Lock high-activity maps for focused flow review",
+      "finding": "Lockdown has the highest average telemetry activity at 124.2 events per match.",
+      "evidence": {
+        "map": "Lockdown",
+        "matchCount": 171,
+        "eventCount": 21238,
+        "avgEventsPerMatch": 124.2,
+        "eventGroups": {
+          "death": 168,
+          "kill": 426,
+          "loot": 2050,
+          "movement": 18577,
+          "storm_death": 17
+        }
+      },
+      "recommendation": "Use the traffic heatmap with map/date filters to check whether movement is concentrated into a small number of routes. If the density is too narrow, review route variety, cover placement, spawn approach paths, and rotation options."
+    },
+    {
+      "title": "Review repeated combat and death hotspots for choke pressure",
+      "finding": "The strongest kill hotspot appears on AmbroseValley on February_10 with 13 events. The strongest death hotspot appears on AmbroseValley on February_10 with 7 events.",
+      "evidence": {
+        "topKillCell": {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 24,
+          "cellY": 32,
+          "centerU": 0.382812,
+          "centerV": 0.507812,
+          "count": 13
+        },
+        "topDeathCell": {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 7
+        }
+      },
+      "recommendation": "Inspect these cells in the viewer with kill/death markers enabled. If the hotspots overlap narrow traversal routes, consider adding alternate paths, cover, visibility breaks, or loot/spawn adjustments."
+    },
+    {
+      "title": "Compare human and bot traffic before tuning routes",
+      "finding": "The strongest human and bot traffic cells are not identical, which means human intent and bot pathing should be reviewed separately.",
+      "evidence": {
+        "topHumanTrafficCell": {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 25,
+          "cellY": 13,
+          "centerU": 0.398438,
+          "centerV": 0.210938,
+          "count": 171
+        },
+        "topBotTrafficCell": {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 26,
+          "cellY": 33,
+          "centerU": 0.414062,
+          "centerV": 0.523438,
+          "count": 76
+        }
+      },
+      "recommendation": "Use the Humans/Bots toggles and heatmap population filter to separate real player behavior from AI movement. If bot hotspots do not match human routes, review bot navigation influence before making level layout decisions from aggregate traffic alone."
+    },
+    {
+      "title": "Check loot concentration against traffic concentration",
+      "finding": "The strongest loot hotspot is AmbroseValley on February_10 (cell 22, 8, count 117), while the strongest traffic hotspot is AmbroseValley on February_10 (cell 25, 13, count 188).",
+      "evidence": {
+        "topLootCell": {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 22,
+          "cellY": 8,
+          "centerU": 0.351562,
+          "centerV": 0.132812,
+          "count": 117
+        },
+        "topTrafficCell": {
+          "mapId": "AmbroseValley",
+          "date": "February_10",
+          "cellX": 25,
+          "cellY": 13,
+          "centerU": 0.398438,
+          "centerV": 0.210938,
+          "count": 188
+        }
+      },
+      "recommendation": "Compare loot and traffic overlays to see whether loot placement is pulling players into predictable routes. If loot and traffic overlap too strongly, consider redistributing rewards to support broader map use."
+    }
+  ]
+}
