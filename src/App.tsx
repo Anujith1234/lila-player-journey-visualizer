@@ -46,6 +46,22 @@ function formatTimelineTime(milliseconds: number): string {
   )}`;
 }
 
+function formatDuration(milliseconds: number): string {
+  if (milliseconds < 1000) {
+    return `${Math.round(milliseconds)} ms`;
+  }
+
+  const totalSeconds = Math.round(milliseconds / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+
+  if (minutes === 0) {
+    return `${seconds}s`;
+  }
+
+  return `${minutes}m ${seconds}s`;
+}
+
 function App() {
   const [manifest, setManifest] = useState<Manifest | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -427,7 +443,7 @@ function App() {
           </label>
 
           <label className="field">
-            <span>Players</span>
+            <span>Heatmap population</span>
             <select
               value={heatmapPlayerFilter}
               onChange={(event) =>
@@ -544,7 +560,7 @@ function App() {
                         {showHeatmap && (
                           <>
                             {" "}· <strong>{visibleHeatmapCells.length}</strong>{" "}
-                            {getHeatmapLabel(selectedHeatmapLayer).toLowerCase()} cells
+                            {getHeatmapLabel(selectedHeatmapLayer).toLowerCase()} heatmap cells
                           </>
                         )}
                       </div>
@@ -725,6 +741,10 @@ function App() {
                 <div>
                   <dt>Events</dt>
                   <dd>{selectedMatch.eventCount.toLocaleString()}</dd>
+                </div>
+                <div>
+                  <dt>Duration</dt>
+                  <dd>{formatDuration(selectedMatch.durationMs)}</dd>
                 </div>
               </dl>
             </>

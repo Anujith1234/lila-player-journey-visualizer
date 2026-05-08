@@ -335,6 +335,8 @@ select {
 
 .layer-panel,
 .legend-card {
+  display: grid;
+  gap: 10px;
   padding: 16px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.055);
@@ -457,6 +459,8 @@ select {
 }
 
 .selected-card {
+  display: grid;
+  gap: 10px;
   padding: 16px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.055);
