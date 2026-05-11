@@ -9,13 +9,13 @@
 - Unique players: 339
 - Unique humans: 245
 - Unique bots: 94
-- Unique matches: 796
+- Unique matches: 797
 
 ## Validation Results
 
 - Schema variants: 1
-- Unknown events: {}
-- Unknown maps: {}
+- Unknown events: None
+- Unknown maps: None
 - Filename mismatches: 0
 - Multi-match files: 0
 - Multi-map matches: 0

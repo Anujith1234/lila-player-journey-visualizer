@@ -1,12 +1,13 @@
-from pathlib import Path
-from collections import Counter, defaultdict
-from datetime import datetime, timezone
-from PIL import Image
 import json
 import re
 import shutil
+from collections import Counter
+from datetime import datetime, timezone
+from pathlib import Path
+
 import pandas as pd
 import pyarrow.parquet as pq
+from PIL import Image
 
 
 RAW_DATA_DIR = Path("raw_data/player_data")
@@ -330,37 +331,6 @@ def build_heatmap_points(df: pd.DataFrame, grid_size: int = 64):
 
     return heatmap
 
-    def point_from_row(row):
-        return {
-            "mapId": row["map_id"],
-            "date": row["date"],
-            "matchId": row["match_id"],
-            "playerType": row["player_type"],
-            "u": round(float(row["u"]), 6),
-            "v": round(float(row["v"]), 6),
-        }
-
-    layer_rules = {
-        "traffic": {"Position", "BotPosition"},
-        "kills": {"Kill", "BotKill"},
-        "deaths": {"Killed", "BotKilled"},
-        "loot": {"Loot"},
-        "stormDeaths": {"KilledByStorm"},
-    }
-
-    for _, row in df.iterrows():
-        event = row["event"]
-        player_type = row["player_type"]
-
-        for layer_name, events in layer_rules.items():
-            if event in events:
-                point = point_from_row(row)
-                heatmap[layer_name]["all"].append(point)
-                heatmap[layer_name][player_type].append(point)
-
-    return heatmap
-
-
 def build_dataset_summary(df: pd.DataFrame, files_total: int, minimap_info: dict):
     rows_by_date = Counter(df["date"])
     rows_by_map = Counter(df["map_id"])
@@ -371,7 +341,7 @@ def build_dataset_summary(df: pd.DataFrame, files_total: int, minimap_info: dict
     unique_players = set(df["user_id"])
     unique_humans = set(df[df["player_type"] == "human"]["user_id"])
     unique_bots = set(df[df["player_type"] == "bot"]["user_id"])
-    unique_matches = set(df["match_id"])
+    unique_matches = df.groupby(["date", "match_id"]).ngroups
 
     return {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
@@ -385,7 +355,7 @@ def build_dataset_summary(df: pd.DataFrame, files_total: int, minimap_info: dict
             "uniquePlayers": len(unique_players),
             "uniqueHumans": len(unique_humans),
             "uniqueBots": len(unique_bots),
-            "uniqueMatches": len(unique_matches),
+            "uniqueMatches": int(unique_matches),
         },
         "rowsByDate": counter_to_dict(rows_by_date),
         "rowsByMap": counter_to_dict(rows_by_map),
@@ -405,7 +375,7 @@ def build_map_summary(df: pd.DataFrame):
 
         summary[map_id] = {
             "rowCount": int(len(group)),
-            "matchCount": int(group["match_id"].nunique()),
+            "matchCount": int(group.groupby(["date", "match_id"]).ngroups),
             "playerCount": int(group["user_id"].nunique()),
             "humanRowCount": int(len(human_rows)),
             "botRowCount": int(len(bot_rows)),
@@ -636,6 +606,7 @@ def main():
     print(f"Summary files folder:      {PUBLIC_SUMMARIES_DIR}")
     print(f"Minimaps folder:           {PUBLIC_MINIMAPS_DIR}")
     print("=" * 70)
+
 
 if __name__ == "__main__":
     main()

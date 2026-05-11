@@ -1402,7 +1402,7 @@
       "topBot": []
     }
   },
-  "candidateInsights": [
+  "levelDesignInsights": [
     {
       "title": "Lock high-activity maps for focused flow review",
       "finding": "Lockdown has the highest average telemetry activity at 124.2 events per match.",

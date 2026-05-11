@@ -10,8 +10,49 @@ export interface VisibleHeatmapCell extends HeatmapCell {
   intensity: number;
 }
 
-const MAX_VISIBLE_HEATMAP_CELLS = 1200;
-const MAX_PLAYBACK_HEATMAP_CELLS = 500;
+interface HeatmapCellLimit {
+  default: number;
+  playback: number;
+  minIntensity: number;
+}
+
+const HEATMAP_CELL_LIMITS: Record<HeatmapLayer, HeatmapCellLimit> = {
+  traffic: {
+    default: 650,
+    playback: 320,
+    minIntensity: 0.16,
+  },
+  kills: {
+    default: 900,
+    playback: 500,
+    minIntensity: 0.04,
+  },
+  deaths: {
+    default: 900,
+    playback: 500,
+    minIntensity: 0.04,
+  },
+  loot: {
+    default: 700,
+    playback: 400,
+    minIntensity: 0.08,
+  },
+  stormDeaths: {
+    default: 300,
+    playback: 200,
+    minIntensity: 0,
+  },
+};
+
+function sortHeatmapCells(a: HeatmapCell, b: HeatmapCell): number {
+  return (
+    b.count - a.count ||
+    a.mapId.localeCompare(b.mapId) ||
+    a.date.localeCompare(b.date) ||
+    a.cellX - b.cellX ||
+    a.cellY - b.cellY
+  );
+}
 
 export function getVisibleHeatmapCells(
   heatmapData: HeatmapData | null,
@@ -23,18 +64,22 @@ export function getVisibleHeatmapCells(
 ): VisibleHeatmapCell[] {
   if (!heatmapData) return [];
 
-  const cells = heatmapData.layers[layer][playerFilter].filter((cell) => {
+  const layerCells = heatmapData.layers[layer]?.[playerFilter] ?? [];
+  const layerLimits = HEATMAP_CELL_LIMITS[layer];
+
+  const matchingCells = layerCells.filter((cell) => {
     const mapMatches = cell.mapId === mapId;
     const dateMatches = date === "all" || cell.date === date;
+
     return mapMatches && dateMatches;
   });
 
   const maxVisibleCells = isPlaybackActive
-    ? MAX_PLAYBACK_HEATMAP_CELLS
-    : MAX_VISIBLE_HEATMAP_CELLS;
+    ? layerLimits.playback
+    : layerLimits.default;
 
-  const strongestCells = [...cells]
-    .sort((a, b) => b.count - a.count)
+  const strongestCells = [...matchingCells]
+    .sort(sortHeatmapCells)
     .slice(0, maxVisibleCells);
 
   const maxCount = strongestCells.reduce(
@@ -44,10 +89,12 @@ export function getVisibleHeatmapCells(
 
   if (maxCount === 0) return [];
 
-  return strongestCells.map((cell) => ({
-    ...cell,
-    intensity: cell.count / maxCount,
-  }));
+  return strongestCells
+    .map((cell) => ({
+      ...cell,
+      intensity: cell.count / maxCount,
+    }))
+    .filter((cell) => cell.intensity >= layerLimits.minIntensity);
 }
 
 export function getHeatmapLabel(layer: HeatmapLayer): string {
@@ -55,5 +102,6 @@ export function getHeatmapLabel(layer: HeatmapLayer): string {
   if (layer === "kills") return "Kills";
   if (layer === "deaths") return "Deaths";
   if (layer === "loot") return "Loot";
+
   return "Storm deaths";
 }

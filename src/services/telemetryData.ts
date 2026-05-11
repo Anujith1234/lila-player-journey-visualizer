@@ -4,38 +4,32 @@ import type {
   MatchTelemetry,
 } from "../types/telemetry";
 
-export async function loadManifest(): Promise<Manifest> {
-  const response = await fetch("/data/manifest.json");
+async function fetchJson<T>(url: string, label: string): Promise<T> {
+  const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error(
-      `Failed to load manifest.json: ${response.status} ${response.statusText}`,
+      `Failed to load ${label}: ${response.status} ${response.statusText}`,
     );
   }
 
-  return response.json() as Promise<Manifest>;
+  return response.json() as Promise<T>;
 }
 
-export async function loadMatchTelemetry(matchFile: string): Promise<MatchTelemetry> {
-  const response = await fetch(`/data/${matchFile}`);
-
-  if (!response.ok) {
-    throw new Error(
-      `Failed to load match telemetry: ${response.status} ${response.statusText}`,
-    );
-  }
-
-  return response.json() as Promise<MatchTelemetry>;
+export function loadManifest(): Promise<Manifest> {
+  return fetchJson<Manifest>("/data/manifest.json", "manifest.json");
 }
 
-export async function loadHeatmapData(): Promise<HeatmapData> {
-  const response = await fetch("/data/summaries/heatmap_points.json");
+export function loadMatchTelemetry(matchFile: string): Promise<MatchTelemetry> {
+  return fetchJson<MatchTelemetry>(
+    `/data/${matchFile}`,
+    "match telemetry",
+  );
+}
 
-  if (!response.ok) {
-    throw new Error(
-      `Failed to load heatmap data: ${response.status} ${response.statusText}`,
-    );
-  }
-
-  return response.json() as Promise<HeatmapData>;
+export function loadHeatmapData(): Promise<HeatmapData> {
+  return fetchJson<HeatmapData>(
+    "/data/summaries/heatmap_points.json",
+    "heatmap data",
+  );
 }

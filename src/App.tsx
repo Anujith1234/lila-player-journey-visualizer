@@ -27,12 +27,25 @@ import {
 const PLAYBACK_TIME_SCALE = 0.2;
 
 function getHeatmapOpacity(layer: HeatmapLayer, intensity: number): number {
-  if (layer === "traffic") return 0.035 + intensity * 0.26;
-  if (layer === "loot") return 0.05 + intensity * 0.34;
-  if (layer === "kills") return 0.08 + intensity * 0.42;
-  if (layer === "deaths") return 0.08 + intensity * 0.42;
+  const clampedIntensity = Math.min(Math.max(intensity, 0), 1);
 
-  return 0.12 + intensity * 0.5;
+  if (layer === "traffic") {
+    return 0.08 + clampedIntensity * 0.34;
+  }
+
+  if (layer === "loot") {
+    return 0.12 + clampedIntensity * 0.42;
+  }
+
+  if (layer === "kills") {
+    return 0.18 + clampedIntensity * 0.5;
+  }
+
+  if (layer === "deaths") {
+    return 0.18 + clampedIntensity * 0.48;
+  }
+
+  return 0.22 + clampedIntensity * 0.55;
 }
 
 function formatTimelineTime(milliseconds: number): string {
@@ -85,6 +98,7 @@ function App() {
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
   const [heatmapData, setHeatmapData] = useState<HeatmapData | null>(null);
   const [heatmapLoadError, setHeatmapLoadError] = useState<string | null>(null);
+  const [isHeatmapLoading, setIsHeatmapLoading] = useState(true);
   const [selectedHeatmapLayer, setSelectedHeatmapLayer] =
     useState<HeatmapLayer>("traffic");
   const [heatmapPlayerFilter, setHeatmapPlayerFilter] =
@@ -115,6 +129,9 @@ function App() {
   }, []);
 
   useEffect(() => {
+    setIsHeatmapLoading(true);
+    setHeatmapLoadError(null);
+
     loadHeatmapData()
       .then((data) => {
         setHeatmapData(data);
@@ -123,6 +140,9 @@ function App() {
         const message =
           error instanceof Error ? error.message : "Unknown heatmap loading error";
         setHeatmapLoadError(message);
+      })
+      .finally(() => {
+        setIsHeatmapLoading(false);
       });
   }, []);
 
@@ -144,21 +164,6 @@ function App() {
       filteredMatches[0]
     );
   }, [manifest, filteredMatches, selectedMatchKey]);
-
-  useEffect(() => {
-    if (filteredMatches.length === 0) {
-      setSelectedMatchKey("");
-      return;
-    }
-
-    const stillAvailable = filteredMatches.some(
-      (match) => match.matchKey === selectedMatchKey,
-    );
-
-    if (!stillAvailable) {
-      setSelectedMatchKey(filteredMatches[0].matchKey);
-    }
-  }, [filteredMatches, selectedMatchKey]);
 
   useEffect(() => {
     if (!selectedMatch) {
@@ -214,7 +219,7 @@ function App() {
   }, [matchTelemetry, layerVisibility, currentTimeMs]);
 
   const visibleHeatmapCells = useMemo(() => {
-    if (!selectedMatch) return [];
+    if (!showHeatmap || !selectedMatch) return [];
 
     return getVisibleHeatmapCells(
       heatmapData,
@@ -231,6 +236,7 @@ function App() {
     selectedDate,
     selectedHeatmapLayer,
     selectedMatch,
+    showHeatmap,
   ]);
 
   useEffect(() => {
@@ -330,7 +336,7 @@ function App() {
             disabled={filteredMatches.length === 0}
           >
             {filteredMatches.length === 0 ? (
-              <option>No matches available</option>
+              <option value="">No matches available</option>
             ) : (
               filteredMatches.map((match) => (
                 <option key={match.matchKey} value={match.matchKey}>
@@ -457,6 +463,10 @@ function App() {
             </select>
           </label>
 
+          {showHeatmap && isHeatmapLoading && (
+            <p className="panel-warning">Loading heatmap summary…</p>
+          )}
+
           {heatmapLoadError && (
             <p className="panel-warning">{heatmapLoadError}</p>
           )}
@@ -494,7 +504,6 @@ function App() {
                     preserveAspectRatio="none"
                     aria-label="Telemetry overlay"
                   >
-
                     {showHeatmap &&
                       heatmapData &&
                       visibleHeatmapCells.map((cell) => (
@@ -560,7 +569,8 @@ function App() {
                         {showHeatmap && (
                           <>
                             {" "}· <strong>{visibleHeatmapCells.length}</strong>{" "}
-                            {getHeatmapLabel(selectedHeatmapLayer).toLowerCase()} heatmap cells
+                            {getHeatmapLabel(selectedHeatmapLayer).toLowerCase()}{" "}
+                            heatmap cells
                           </>
                         )}
                       </div>
@@ -715,7 +725,7 @@ function App() {
             </span>
           </div>
         </div>
-        
+
         <div className="selected-card">
           <p className="eyebrow">Selected Match</p>
           {selectedMatch ? (

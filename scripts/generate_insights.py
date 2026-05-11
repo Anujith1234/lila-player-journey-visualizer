@@ -41,17 +41,6 @@ def write_markdown(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
-def format_count(value: int | float) -> str:
-    if isinstance(value, float):
-        return f"{value:,.2f}"
-
-    return f"{value:,}"
-
-
-def get_event_group_count(summary: dict[str, Any], group_name: str) -> int:
-    return int(summary.get("eventGroups", {}).get(group_name, 0))
-
-
 def get_top_matches(manifest: dict[str, Any], limit: int = 10) -> list[dict[str, Any]]:
     return sorted(
         manifest["matches"],
@@ -307,7 +296,7 @@ def build_markdown_report(insights_data: dict[str, Any]) -> str:
     lines.append("## Level Design Insights")
     lines.append("")
 
-    for index, insight in enumerate(insights_data["candidateInsights"], start=1):
+    for index, insight in enumerate(insights_data["levelDesignInsights"], start=1):
         lines.append(f"### {index}. {insight['title']}")
         lines.append("")
         lines.append(f"**Finding:** {insight['finding']}")
@@ -381,7 +370,7 @@ def main() -> None:
         "mapSummary": map_summary,
         "topMatchesByEventCount": top_matches,
         "heatmapSummary": heatmap_summary,
-        "candidateInsights": candidate_insights,
+        "levelDesignInsights": candidate_insights,
     }
 
     write_json(INSIGHTS_JSON_PATH, insights_data)

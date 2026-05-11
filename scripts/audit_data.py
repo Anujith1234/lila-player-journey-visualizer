@@ -1,10 +1,11 @@
-from pathlib import Path
-from collections import Counter, defaultdict
-from PIL import Image
 import json
 import re
+from collections import Counter, defaultdict
+from pathlib import Path
+
 import pandas as pd
 import pyarrow.parquet as pq
+from PIL import Image
 
 
 RAW_DATA_DIR = Path("raw_data/player_data")
@@ -105,6 +106,11 @@ def update_min_max(bounds: dict, key: str, value: float):
     elif key.endswith("_max"):
         bounds[key] = max(bounds[key], value)
 
+def format_counter_dict(values: dict) -> str:
+    if not values:
+        return "None"
+
+    return ", ".join(f"{key}: {value}" for key, value in sorted(values.items()))
 
 def main():
     if not RAW_DATA_DIR.exists():
@@ -268,10 +274,12 @@ def main():
                         audit["unique_bots"].add(user_id)
 
                 for match_id, match_group in df.groupby("match_id"):
-                    audit["unique_matches"].add(match_id)
+                    match_key = f"{date_folder.name}__{match_id}"
+                    audit["unique_matches"].add(match_key)
 
-                    if match_id not in match_summary:
-                        match_summary[match_id] = {
+                    if match_key not in match_summary:
+                        match_summary[match_key] = {
+                            "match_key": match_key,
                             "match_id": match_id,
                             "date": date_folder.name,
                             "maps": set(),
@@ -285,7 +293,7 @@ def main():
                             "max_ts": None,
                         }
 
-                    match_data = match_summary[match_id]
+                    match_data = match_summary[match_key]
                     match_data["event_count"] += len(match_group)
                     match_data["maps"].update(match_group["map_id"].unique())
                     match_data["players"].update(match_group["user_id"].unique())
@@ -344,9 +352,9 @@ def main():
                     }
                 )
 
-    for match_id, data in match_summary.items():
+    for match_key, data in match_summary.items():
         if len(data["maps"]) > 1:
-            audit["multi_map_matches"].add(match_id)
+            audit["multi_map_matches"].add(match_key)
 
     minimap_info = {}
     for map_id, config in MAP_CONFIG.items():
@@ -368,14 +376,15 @@ def main():
             }
 
     match_rows = []
-    for match_id, data in match_summary.items():
+    for match_key, data in match_summary.items():
         duration_ms = None
         if data["min_ts"] is not None and data["max_ts"] is not None:
             duration_ms = int((data["max_ts"] - data["min_ts"]).total_seconds() * 1000)
 
         match_rows.append(
             {
-                "match_id": match_id,
+                "match_key": match_key,
+                "match_id": data["match_id"],
                 "date": data["date"],
                 "maps": sorted(data["maps"]),
                 "player_count": len(data["players"]),
@@ -452,8 +461,10 @@ def main():
 
         file.write("## Validation Results\n\n")
         file.write(f"- Schema variants: {report['schema_variant_count']}\n")
-        file.write(f"- Unknown events: {report['unknown_events']}\n")
-        file.write(f"- Unknown maps: {report['unknown_maps']}\n")
+        file.write(
+            f"- Unknown events: {format_counter_dict(report['unknown_events'])}\n"
+        )
+        file.write(f"- Unknown maps: {format_counter_dict(report['unknown_maps'])}\n")
         file.write(f"- Filename mismatches: {report['filename_mismatch_count']}\n")
         file.write(f"- Multi-match files: {report['multi_match_file_count']}\n")
         file.write(f"- Multi-map matches: {report['multi_map_match_count']}\n")

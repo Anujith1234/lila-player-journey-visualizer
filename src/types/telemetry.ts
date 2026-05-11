@@ -19,6 +19,10 @@ export type EventGroup =
   | "storm_death"
   | "loot";
 
+export type EventCounts = Partial<Record<EventName, number>>;
+
+export type EventGroupCounts = Partial<Record<EventGroup, number>>;
+
 export interface MapConfig {
   scale: number;
   origin_x: number;
@@ -43,8 +47,8 @@ export interface ManifestMatch {
   humanCount: number;
   botCount: number;
   eventCount: number;
-  events: Partial<Record<EventName, number>>;
-  eventGroups: Partial<Record<EventGroup, number>>;
+  events: EventCounts;
+  eventGroups: EventGroupCounts;
 }
 
 export interface Manifest {
@@ -95,8 +99,8 @@ export interface MatchTelemetry {
     humanCount: number;
     botCount: number;
     eventCount: number;
-    events: Partial<Record<EventName, number>>;
-    eventGroups: Partial<Record<EventGroup, number>>;
+    events: EventCounts;
+    eventGroups: EventGroupCounts;
   };
   players: TelemetryPlayer[];
 }
@@ -122,8 +126,5 @@ export interface HeatmapCell {
 
 export interface HeatmapData {
   gridSize: number;
-  layers: Record<
-    HeatmapLayer,
-    Record<HeatmapPlayerFilter, HeatmapCell[]>
-  >;
+  layers: Record<HeatmapLayer, Record<HeatmapPlayerFilter, HeatmapCell[]>>;
 }
