@@ -93,29 +93,37 @@ h3 {
   flex-direction: column;
   gap: 18px;
   height: calc(100vh - 36px);
+  overflow-x: hidden;
   overflow-y: auto;
+  scrollbar-color: rgba(159, 176, 255, 0.32) transparent;
   scrollbar-gutter: stable;
+  scrollbar-width: thin;
 }
 
 .sidebar::-webkit-scrollbar,
 .summary-panel::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 .sidebar::-webkit-scrollbar-track,
 .summary-panel::-webkit-scrollbar-track {
+  margin: 14px 0;
   background: transparent;
 }
 
 .sidebar::-webkit-scrollbar-thumb,
 .summary-panel::-webkit-scrollbar-thumb {
-  background: rgba(159, 176, 255, 0.22);
+  min-height: 48px;
+  border: 3px solid transparent;
   border-radius: 999px;
+  background: rgba(159, 176, 255, 0.34);
+  background-clip: padding-box;
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover,
 .summary-panel::-webkit-scrollbar-thumb:hover {
-  background: rgba(159, 176, 255, 0.36);
+  background: rgba(159, 176, 255, 0.48);
+  background-clip: padding-box;
 }
 
 .field {
@@ -548,6 +556,7 @@ dd {
   .main-panel {
     height: auto;
     max-height: none;
+    overflow: visible;
   }
 
   .summary-panel {

@@ -18,28 +18,28 @@ interface HeatmapCellLimit {
 
 const HEATMAP_CELL_LIMITS: Record<HeatmapLayer, HeatmapCellLimit> = {
   traffic: {
-    default: 650,
-    playback: 320,
-    minIntensity: 0.16,
+    default: 520,
+    playback: 260,
+    minIntensity: 0.18,
   },
   kills: {
-    default: 900,
-    playback: 500,
-    minIntensity: 0.04,
-  },
-  deaths: {
-    default: 900,
-    playback: 500,
-    minIntensity: 0.04,
-  },
-  loot: {
-    default: 700,
-    playback: 400,
+    default: 360,
+    playback: 220,
     minIntensity: 0.08,
   },
-  stormDeaths: {
-    default: 300,
+  deaths: {
+    default: 320,
     playback: 200,
+    minIntensity: 0.1,
+  },
+  loot: {
+    default: 520,
+    playback: 300,
+    minIntensity: 0.1,
+  },
+  stormDeaths: {
+    default: 180,
+    playback: 120,
     minIntensity: 0,
   },
 };
