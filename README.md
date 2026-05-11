@@ -313,6 +313,17 @@ The app keeps human and bot controls separate because aggregate telemetry can hi
 - Heatmap visibility depends on event density; sparse layers such as storm deaths may only appear in specific maps/dates.
 - Large minimap images are served from the public folder and may take a moment to load on first view.
 
+## Usage Walkthrough
+
+1. Open the live demo from the link above.
+2. Use the Map, Date, and Match filters to select a match session.
+3. Review human and bot movement paths on the minimap.
+4. Use the timeline controls to play, pause, reset, or scrub through the match.
+5. Toggle loot, kill, death, and storm death markers from the Layers panel.
+6. Enable the heatmap overlay and switch between Traffic, Kills, Deaths, Loot, and Storm Deaths.
+7. Use the heatmap population filter to compare All, Humans, and Bots.
+8. Review the Dataset Summary and Selected Match panels for context.
+
 ## Verification
 
 ```powershell
