@@ -6,8 +6,8 @@ The tool is designed for level designers and gameplay reviewers who need to insp
 
 ## Links
 
-- Live demo: _To be added after deployment_
-- GitHub repository: _To be added before submission_
+- Live demo: https://lila-player-journey-visualizer.vercel.app/
+- GitHub repository: https://github.com/Anujith1234/lila-player-journey-visualizer.git
 
 ## Features
 
